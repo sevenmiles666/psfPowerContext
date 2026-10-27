@@ -266,7 +266,71 @@ _FINANCIAL_EXPANSIONS = {
     "legal": "litigation proceedings contingencies lawsuits",
     "restructuring": "restructuring charges expenses costs",
     "income": "income earnings profit operations",
+    "capital": "consolidated balance sheets property plant equipment capital expenditures cash flows",
+    "intensive": "consolidated statements income balance sheets property plant equipment cash flows",
+    "cashflow": "consolidated statements cash flows operating activities net income capital expenditures",
+    "cash": "cash flows operating investing financing activities",
+    "conversion": "consolidated statements cash flows operating activities net income",
+    "inventory": "consolidated balance sheets inventories cost sales goods sold",
+    "turnover": "consolidated balance sheets inventories cost sales goods sold",
+    "roa": "consolidated statements income balance sheets total assets",
+    "roe": "consolidated statements income balance sheets shareholders equity",
+    "return": "consolidated statements income balance sheets assets equity",
+    "growth": "revenue revenues sales organic change prior year business segment",
+    "segment": "business segment organic sales change acquisitions divestitures",
+    "acquisition": "business combinations acquisitions purchased acquired",
+    "gross": "consolidated statements income sales revenues cost products goods sold",
+    "working": "consolidated balance sheets current assets current liabilities",
+    "debt": "consolidated balance sheets short long term borrowings debt",
+    "dividend": "quarterly cash dividends common shareholders equity board declared authorized paid",
 }
+_FINANCIAL_METRIC_TERMS = frozenset({
+    "ebitda",
+    "capex",
+    "ppne",
+    "ppe",
+    "quick",
+    "cogs",
+    "margin",
+    "tax",
+    "liability",
+    "income",
+    "capital",
+    "intensive",
+    "cashflow",
+    "cash",
+    "conversion",
+    "inventory",
+    "turnover",
+    "roa",
+    "roe",
+    "return",
+    "growth",
+    "gross",
+    "working",
+    "debt",
+    "dividend",
+    "ratio",
+    "profit",
+    "revenue",
+    "sales",
+    "asset",
+    "earnings",
+    "expense",
+})
+_STATEMENT_QUERIES = (
+    "consolidated income statements",
+    "consolidated balance sheets",
+    "consolidated cash flows",
+)
+_STATEMENT_HEADINGS = tuple(
+    re.compile(r"(?m)^[ \t]*(?:consolidated|combined)\s+" + title + r"[ \t]*(?:\([^\n]*\))?[ \t]*$")
+    for title in (
+        r"statements?\s+of\s+(?:income|earnings|operations)",
+        r"(?:balance\s+sheets?|statements?\s+of\s+financial\s+position)",
+        r"statements?\s+of\s+cash\s+flows?",
+    )
+)
 
 
 def _question_terms(question: str) -> tuple[str, ...]:
@@ -290,7 +354,50 @@ def _document_entity(text: str) -> str:
     # The standard projection starts with the caller's document ID. A company
     # token there can select a document without dominating every page within it.
     document_id = text.partition("\n")[0]
-    return re.sub(r"[^a-z0-9]", "", document_id.split("_", 1)[0].lower())
+    name = re.split(r"[_\s-]+(?:19|20)\d{2}", document_id.lower(), maxsplit=1)[0]
+    return re.sub(r"[^a-z0-9]", "", name)
+
+
+def _entity_aliases(entity: str, text: str) -> set[str]:
+    """Derive abbreviations only when the page spells out its document entity."""
+
+    aliases = {entity}
+    words = [term for term in _WORDS.findall(text.partition("\n")[2][:600].lower()) if term not in {"and", "the"}]
+    for start in range(len(words)):
+        for size in range(2, 5):
+            group = words[start : start + size]
+            if len(group) != size or "".join(group) != entity:
+                continue
+            aliases.add("".join(word[0] for word in group))
+            aliases.add("".join(word[:2] for word in group))
+            if size == 2 and group[0] == group[1]:
+                aliases.add(group[0][0] + "n" + group[1][0])
+    return aliases
+
+
+def _statement_family(text: str) -> int | None:
+    head = text.partition("\n")[2][:600].lower()
+    matches = [index for index, pattern in enumerate(_STATEMENT_HEADINGS) if pattern.search(head)]
+    # A table of contents can list all statements; it is not one of them.
+    return matches[0] if len(matches) == 1 else None
+
+
+def _match_document_entities(
+    candidates: dict[_PageKey, MemoryHit], entities: dict[_PageKey, str], terms: tuple[str, ...]
+) -> tuple[set[str], set[str]]:
+    aliases: dict[str, set[str]] = {}
+    for key, entity in entities.items():
+        aliases.setdefault(entity, {entity}).update(_entity_aliases(entity, candidates[key].text))
+    query_entities: set[str] = set()
+    entity_terms: set[str] = set()
+    for start in range(len(terms)):
+        for size in range(1, 5):
+            group = terms[start : start + size]
+            for entity, names in aliases.items():
+                if "".join(group) in names:
+                    query_entities.add(entity)
+                    entity_terms.update(group)
+    return query_entities, entity_terms
 
 
 async def _collect_candidates(
@@ -307,6 +414,29 @@ async def _collect_candidates(
     return candidates, ranks
 
 
+async def _expand_document_candidates(
+    memory: ScopedMemoryApplication,
+    candidates: dict[_PageKey, MemoryHit],
+    ranks: dict[_PageKey, float],
+    terms: tuple[str, ...],
+) -> None:
+    entities = {key: _document_entity(hit.text) for key, hit in candidates.items()}
+    query_entities, _entity_terms = _match_document_entities(candidates, entities, terms)
+    documents = {
+        candidates[key].text.partition("\n")[0] for key, entity in entities.items() if entity in query_entities
+    }
+    for document in sorted(documents):
+        # A short statement can lose the global lexical cutoff to repeated prose.
+        # Expand only documents identified in the question, through the same scoped API.
+        page = await memory.search(SearchMemoryRequest(query=document, mode="fts", limit=1000))
+        for hit in page.hits:
+            if hit.text.partition("\n")[0] != document:
+                continue
+            key = hit.memory_ref.model_dump_json(), hit.entry_id, hit.entry_version_id
+            candidates[key] = hit
+            ranks.setdefault(key, 0.0)
+
+
 def _rank_candidates(
     candidates: dict[_PageKey, MemoryHit],
     ranks: dict[_PageKey, float],
@@ -320,20 +450,7 @@ def _rank_candidates(
     }
     counts = {key: Counter(value) for key, value in tokens.items()}
     entities = {key: _document_entity(hit.text) for key, hit in candidates.items()}
-    entity_names = set(entities.values())
-    query_entities = {
-        "".join(terms[start : start + size])
-        for start in range(len(terms))
-        for size in range(1, 4)
-        if "".join(terms[start : start + size]) in entity_names
-    }
-    entity_terms = {
-        term
-        for start in range(len(terms))
-        for size in range(1, 4)
-        if "".join(terms[start : start + size]) in query_entities
-        for term in terms[start : start + size]
-    }
+    query_entities, entity_terms = _match_document_entities(candidates, entities, terms)
     weighted_terms = dict.fromkeys((_singular(term) for term in terms if term not in entity_terms), 1.0)
     for expansion in expansions:
         for term in expansion.split():
@@ -370,7 +487,27 @@ def _rank_candidates(
         document_match = 4 * math.log1p(len(counts)) if entities[key] in query_entities else 0
         return lexical + 2 * proximity + 8 * ranks[key] + document_match
 
-    return [candidates[key] for key in sorted(candidates, key=lambda key: (-score(key), key))]
+    ranked = sorted(candidates, key=lambda key: (-score(key), key))
+    selected = []
+    if any(_singular(term) in _FINANCIAL_METRIC_TERMS for term in terms):
+        # Ratios and cash metrics often name a concept rather than the statement
+        # containing its operands. Keep a small, diverse set of actual statements.
+        for family in range(len(_STATEMENT_HEADINGS)):
+            matching = [
+                key
+                for key in ranked
+                if (not query_entities or entities[key] in query_entities)
+                and _statement_family(candidates[key].text) == family
+            ]
+            selected.extend(matching[:2])
+    selected_set = set(selected)
+    return [
+        candidates[key]
+        for key in (
+            *(key for key in ranked if key in selected_set),
+            *(key for key in ranked if key not in selected_set),
+        )
+    ]
 
 
 async def search_pdf_pages(
@@ -385,12 +522,14 @@ async def search_pdf_pages(
     if limit == 0:
         return ()
     terms = _question_terms(question)
-    expansions = tuple(_FINANCIAL_EXPANSIONS[term] for term in terms if term in _FINANCIAL_EXPANSIONS)
-    queries = [analyze_fts_query(question), " ".join(terms), *expansions]
+    normalized_terms = {_singular(term) for term in terms}
+    expansions = tuple(value for term, value in _FINANCIAL_EXPANSIONS.items() if _singular(term) in normalized_terms)
+    queries = [analyze_fts_query(question), " ".join(terms), *expansions, *_STATEMENT_QUERIES]
     # Small groups admit concise tables containing only some requested facts.
     queries.extend(" ".join(terms[start : start + 4]) for start in range(0, len(terms), 4))
     queries.extend(" ".join(_singular(term) for term in terms[start : start + 4]) for start in range(0, len(terms), 4))
     candidates, ranks = await _collect_candidates(memory, queries)
+    await _expand_document_candidates(memory, candidates, ranks, terms)
 
     citations = []
     seen_pages = set()

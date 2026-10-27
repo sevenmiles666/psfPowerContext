@@ -27,6 +27,7 @@ import rfc8785
 from pydantic import BaseModel, ConfigDict, JsonValue, ValidationError
 
 from powercontext.builtin.artifacts.memory.models import MemoryContent
+from powercontext.limits import MAX_SOURCE_OBSERVATION_BYTES
 
 _ENTRY_HASH_DOMAIN = b"powercontext:entry-content:v1\0"
 _EMBEDDING_HASH_DOMAIN = b"powercontext:embedding-content:v1\0"
@@ -37,7 +38,7 @@ class _CanonicalValueError(ValueError):
     def __init__(self, code: str, detail: object | None = None) -> None:
         self.code = code
         messages = {
-            "text-too-long": "memory entry text must not exceed 8192 UTF-8 bytes",
+            "text-too-long": f"memory entry text must not exceed {detail or 8192} UTF-8 bytes",
             "reason-too-long": "memory change reason must not exceed 512 Unicode code points",
             "identifier-empty": "memory identifiers must be non-empty strings",
             "identifier-ascii": "memory identifiers must contain only ASCII characters",
@@ -78,12 +79,17 @@ def canonical_json(value: object) -> bytes:
     return rfc8785.dumps(_validated_json(value))
 
 
-def normalize_text(value: str) -> str:
-    """Normalize and validate one durable entry body."""
+def normalize_text(value: str, *, source_backed: bool = False) -> str:
+    """Normalize a durable body within its input boundary's size limit.
+
+    Captured evidence must preserve a complete source page or record. Such bodies
+    use the existing observation bound; standalone notes keep their 8 KiB bound.
+    """
 
     normalized = _normalize_non_empty_string(value, "memory entry text")
-    if len(normalized.encode("utf-8")) > 8192:
-        raise _CanonicalValueError("text-too-long")
+    maximum = MAX_SOURCE_OBSERVATION_BYTES if source_backed else 8192
+    if len(normalized.encode("utf-8")) > maximum:
+        raise _CanonicalValueError("text-too-long", maximum)
     return normalized
 
 
@@ -160,7 +166,7 @@ def entry_content_bytes(
 
     return canonical_json({
         "kind": normalize_kind(kind),
-        "text": normalize_text(text),
+        "text": normalize_text(text, source_backed=bool(source_refs)),
         "source_refs": normalize_refs(source_refs),
         "artifact_refs": normalize_refs(artifact_refs),
     })
