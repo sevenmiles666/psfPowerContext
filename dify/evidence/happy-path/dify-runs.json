@@ -1,0 +1,142 @@
+{
+  "dify_version": "1.9.2",
+  "player": "acceptance-1ac1215d5390",
+  "app_id": "de17e7ed-98e0-49c1-a026-5eeec6d90638",
+  "runs": [
+    {
+      "action": "观察",
+      "result": {
+        "id": "5d605e90-3f61-4a0f-b053-035b99c975ca",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 1 个昨天\n\n货架上只有一把雨伞、一只铃铛和一张写着‘昨日’的收据。门外永远下雨。店主说：借的东西要还，偷的东西会记账。\n\n店主的话：我记得你，但你已不在。\n\n接下来：观察 / 借伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 1}, \"entry_id\": \"mem_ent_23e7452d0abe47aeb85724e4283d10aa\", \"entry_version_id\": \"mem_ver_6a8935968ae14f4cbafb5b46355d8e3e\"}",
+          "state": "{\"day\": 1, \"trust\": 0, \"debt\": false, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.289116,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128226,
+        "finished_at": 1793128227,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "借伞",
+      "result": {
+        "id": "59452294-d158-4fb7-9f44-9ab800db350b",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 1 个昨天\n\n你借走雨伞。雨落在伞面上，声音像倒着走的秒针。店主在收据上写下：待归还。\n\n店主的话：我曾在梦中见过你，却不知你是否还在我心中。\n\n接下来：观察 / 还伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 2}, \"entry_id\": \"mem_ent_11fb199a1a1a442fa050d3af064e2791\", \"entry_version_id\": \"mem_ver_434b1866b4e747f1aaf29e759530ea8f\"}",
+          "state": "{\"day\": 1, \"trust\": 0, \"debt\": false, \"umbrella\": true, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.31497,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128227,
+        "finished_at": 1793128229,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "还伞",
+      "result": {
+        "id": "2b63059f-bcfd-46db-aade-bc47a4cbb13b",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 1 个昨天\n\n你把雨伞还给店主。他擦掉收据上的欠条：即使明天变回昨天，我也会记得你守过约。\n\n店主的话：我以为时间冲淡了一切，原来总有些相遇会留下。\n\n接下来：观察 / 借伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 3}, \"entry_id\": \"mem_ent_94f5bc9703944db78f60cce848400d43\", \"entry_version_id\": \"mem_ver_831d6eed9a7540009695cdddafc32fca\"}",
+          "state": "{\"day\": 1, \"trust\": 1, \"debt\": false, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.352502,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128229,
+        "finished_at": 1793128231,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "回到昨天",
+      "result": {
+        "id": "184592a4-218c-471d-a602-230b1aa43692",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n你撕掉收据。货架和雨声恢复原样，口袋也空了。店主却认出了你：时间能重来，守约不会白费。\n\n店主的话：我以为时间冲淡了一切，原来总有些相遇会留下。\n\n接下来：观察 / 借伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 4}, \"entry_id\": \"mem_ent_c0efbad95df84fe5ba0078e525c9a5fa\", \"entry_version_id\": \"mem_ver_b7ec048282a2465cb53bef344c02edd4\"}",
+          "state": "{\"day\": 2, \"trust\": 1, \"debt\": false, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.338605,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128231,
+        "finished_at": 1793128232,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "敲铃",
+      "result": {
+        "id": "aeecf34e-bbf0-4f6a-8bb7-ff5f14c11c62",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n铃声终于向前走了。店主认出了昨天还伞的你，把门牌翻成‘明日’。你带走的不是雨伞，是一次没有被时间抹掉的信任。【通关：守约的人】\n\n店主的话：我以为时间冲淡了所有过往，却忘了你曾在我心中留下。",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 5}, \"entry_id\": \"mem_ent_49e286f2fe8b4fe2a24eae56977232b4\", \"entry_version_id\": \"mem_ver_2d35d63c572f44d2bf7d3280038d3525\"}",
+          "state": "{\"day\": 2, \"trust\": 1, \"debt\": false, \"umbrella\": false, \"bell\": false, \"escaped\": true}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.300812,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128233,
+        "finished_at": 1793128234,
+        "exceptions_count": 0,
+        "files": []
+      }
+    }
+  ]
+}

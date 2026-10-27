@@ -1,0 +1,142 @@
+{
+  "dify_version": "1.9.2",
+  "player": "acceptance-a1b3d083de42",
+  "app_id": "de17e7ed-98e0-49c1-a026-5eeec6d90638",
+  "runs": [
+    {
+      "action": "偷铃",
+      "result": {
+        "id": "4ce723cb-9957-45dd-9c3a-022d5a7a6dbe",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 1 个昨天\n\n铃铛进了你的口袋，整家店突然安静。店主没有拦你，只在看不见的账本上记了一笔。\n\n店主的话：我有些戒备，但还是愿意等待改正。\n\n接下来：观察 / 道歉 / 回到昨天 / 敲铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 1}, \"entry_id\": \"mem_ent_54e9bed9e3a34821bbd5b409ca5364a8\", \"entry_version_id\": \"mem_ver_99203d73c6314f99b328c034441b93fd\"}",
+          "state": "{\"day\": 1, \"trust\": 0, \"debt\": true, \"umbrella\": false, \"bell\": true, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.356681,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128193,
+        "finished_at": 1793128195,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "回到昨天",
+      "result": {
+        "id": "2ad51461-a89c-4029-9b57-ed6c6e152975",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n你撕掉收据。货架和雨声恢复原样，口袋也空了。店主却说：昨天没结清的账，还在。\n\n店主的话：我有些戒备，但愿等待改正。\n\n接下来：观察 / 道歉 / 回到昨天 / 敲铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 2}, \"entry_id\": \"mem_ent_e2bd283fcd074d63aec3b9aeaf6aed70\", \"entry_version_id\": \"mem_ver_fd524d8a2f044c0c935eff18434a326e\"}",
+          "state": "{\"day\": 2, \"trust\": 0, \"debt\": true, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.464605,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128195,
+        "finished_at": 1793128196,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "借伞",
+      "result": {
+        "id": "af237147-873d-43bb-8c22-accfd1fadcbb",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n店主把伞收回柜台：昨天偷走的铃铛还记在账上。先说清楚，再谈借。\n\n店主的话：我有些戒备，但还是愿意等待改正。\n\n接下来：观察 / 道歉 / 回到昨天 / 敲铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 3}, \"entry_id\": \"mem_ent_359c1f9c6305427190602947242735cb\", \"entry_version_id\": \"mem_ver_4a120b81cde04b18920ea167a5e4e62a\"}",
+          "state": "{\"day\": 2, \"trust\": 0, \"debt\": true, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.228128,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128197,
+        "finished_at": 1793128198,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "道歉",
+      "result": {
+        "id": "f78d5bc3-5b07-4b21-8777-65f62ede7e22",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n你承认偷铃。店主合上账本：记得错误，是为了给改正留个位置。欠账清了，信任要重新积攒。\n\n店主的话：我有点好奇，他是不是又在偷看我。\n\n接下来：观察 / 借伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 4}, \"entry_id\": \"mem_ent_6899d954b9934f5688ac6598e35d86d6\", \"entry_version_id\": \"mem_ver_3a609aa1d31d4af6941f58e287ab4548\"}",
+          "state": "{\"day\": 2, \"trust\": 0, \"debt\": false, \"umbrella\": false, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.353706,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128199,
+        "finished_at": 1793128200,
+        "exceptions_count": 0,
+        "files": []
+      }
+    },
+    {
+      "action": "借伞",
+      "result": {
+        "id": "e2a89b4a-8560-42fb-99ae-539193d9ffea",
+        "workflow_id": "8125895b-ed61-4e82-9a10-392ae696248e",
+        "status": "succeeded",
+        "outputs": {
+          "answer": "第 2 个昨天\n\n你借走雨伞。雨落在伞面上，声音像倒着走的秒针。店主在收据上写下：待归还。\n\n店主的话：我记得你，但这次想尝尝新口味。\n\n接下来：观察 / 还伞 / 回到昨天 / 敲铃 / 偷铃",
+          "memory_receipt": "{\"memory_ref\": {\"family\": \"memory\", \"artifact_id\": \"memory\", \"revision\": 5}, \"entry_id\": \"mem_ent_18692e67506741a2abb0b4be7ae872ea\", \"entry_version_id\": \"mem_ver_833ad75d9a644ff3a7cd9db0ab97b11e\"}",
+          "state": "{\"day\": 2, \"trust\": 0, \"debt\": false, \"umbrella\": true, \"bell\": false, \"escaped\": false}",
+          "model_used": "true"
+        },
+        "error": null,
+        "elapsed_time": 1.185463,
+        "total_tokens": 0,
+        "total_steps": 7,
+        "created_by": {
+          "id": "eb3604b8-9673-4317-a88d-14ae6043c7bb",
+          "name": "OceanBase Captain",
+          "email": "captain@local.test"
+        },
+        "created_at": 1793128201,
+        "finished_at": 1793128202,
+        "exceptions_count": 0,
+        "files": []
+      }
+    }
+  ]
+}

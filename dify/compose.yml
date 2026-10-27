@@ -1,0 +1,86 @@
+name: yesterday-store
+
+x-api-env: &api-env
+  MODE: api
+  SECRET_KEY: ${DIFY_SECRET_KEY:?Generate a local .env first}
+  DB_USERNAME: postgres
+  DB_PASSWORD: ${DB_PASSWORD:?Generate a local .env first}
+  DB_HOST: db
+  DB_PORT: 5432
+  DB_DATABASE: dify
+  REDIS_HOST: redis
+  REDIS_PORT: 6379
+  REDIS_PASSWORD: ${REDIS_PASSWORD:?Generate a local .env first}
+  CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
+  STORAGE_TYPE: opendal
+  OPENDAL_SCHEME: fs
+  OPENDAL_FS_ROOT: /app/api/storage
+  MIGRATION_ENABLED: 'true'
+  SERVER_WORKER_AMOUNT: 1
+  SERVER_WORKER_CONNECTIONS: 10
+  CODE_EXECUTION_ENDPOINT: http://sandbox:8194
+  CODE_EXECUTION_API_KEY: ${SANDBOX_API_KEY:?Generate a local .env first}
+  CODE_EXECUTION_READ_TIMEOUT: 60
+  CODE_EXECUTION_CONNECT_TIMEOUT: 30
+  SSRF_PROXY_HTTP_URL: ''
+  SSRF_PROXY_HTTPS_URL: ''
+  CHECK_UPDATE_URL: ''
+
+services:
+  db:
+    image: postgres:15-alpine@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: dify
+    volumes:
+      - ./runtime/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres -d dify']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  redis:
+    image: redis:6-alpine@sha256:63d5174750e285bc3069c4519c53c8b6de6ebe70715140a6c9d21d6f04b77319
+    command: [redis-server, --requirepass, '${REDIS_PASSWORD}']
+    volumes:
+      - ./runtime/redis:/data
+  sandbox:
+    image: langgenius/dify-sandbox:0.2.12@sha256:4e65e8a351a2b17d11750b65403527a347e5cb938bc2271521ca7d689c008ad3
+    environment:
+      API_KEY: ${SANDBOX_API_KEY}
+      GIN_MODE: release
+      WORKER_TIMEOUT: 30
+      ENABLE_NETWORK: 'true'
+      SANDBOX_PORT: 8194
+  api:
+    image: langgenius/dify-api:1.9.2@sha256:7f23e7a624eb965123be367268f30d9070090500c5d1d588b409ff150c29b3dd
+    environment:
+      <<: *api-env
+    ports:
+      - '127.0.0.1:5001:5001'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - ./runtime/storage:/app/api/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  worker:
+    image: langgenius/dify-api:1.9.2@sha256:7f23e7a624eb965123be367268f30d9070090500c5d1d588b409ff150c29b3dd
+    environment:
+      <<: *api-env
+      MODE: worker
+      MIGRATION_ENABLED: 'false'
+      CELERY_WORKER_AMOUNT: 1
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - ./runtime/storage:/app/api/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>昨日便利店 · 雨一直下，记忆不打烊</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#131e24;color:#e9e7dd;font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(112deg,transparent,transparent 41px,#9ab8c20b 42px,transparent 43px)}
+main{max-width:1100px;margin:auto;padding:48px 38px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #52616a;padding-bottom:20px}.brand{font-size:13px;letter-spacing:3px;color:#d4a66a}.open{font-size:12px;letter-spacing:3px;border:1px solid #d4a66a;color:#eac28b;padding:4px 14px;border-radius:20px}
+.grid{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;margin-top:54px}.eyebrow{color:#a5b6ba;font-size:12px;letter-spacing:3px}h1{font-size:clamp(38px,5vw,56px);font-weight:500;line-height:1.28;letter-spacing:2px;margin:22px 0}h1 span{color:#e5bb82}.intro{color:#b8c2c3;max-width:320px}.ticket{margin-top:36px;padding:20px 24px;background:#e6ddc5;color:#3c3c33;transform:rotate(-2deg);box-shadow:0 8px 30px #0004;font-family:ui-monospace,monospace}.ticket b{font-size:13px;letter-spacing:4px}.ticket p{font-size:14px;margin:12px 0}.ticket small{font-size:11px;color:#716e61}
+.play{background:#1c2b32;border:1px solid #45565f;border-radius:3px;box-shadow:0 16px 60px #0003}.play-head{background:#23353c;padding:15px 24px;border-bottom:1px solid #45565f;display:flex;justify-content:space-between;font-size:12px;letter-spacing:2px;color:#d0b995}.scene{padding:28px 28px 14px;min-height:305px;white-space:pre-wrap;line-height:1.95;font-size:15px}.scene small{color:#a4b4b7}.controls{padding:0 24px 24px}.label{font-size:11px;color:#a7b5b8;display:block;letter-spacing:1px;margin:12px 0 5px}input{background:#15232a;color:#ddd8c9;border:1px solid #4a5c65;width:100%;padding:9px 12px;font:inherit;font-size:13px;outline:none}input:focus{border-color:#d9af79}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}button{font:inherit;font-size:13px;background:#263a43;border:1px solid #64757b;color:#e4ded1;padding:7px 15px;border-radius:2px;cursor:pointer}button:hover{background:#3c5058;border-color:#e5bb82}button[data-action="回到昨天"]{color:#f0c489;border-color:#98764c}button:disabled{opacity:.45;cursor:wait}.hint{font-size:11px;color:#9bacae;margin-top:14px}.status{color:#ddba88;font-size:12px;min-height:24px}.footer{margin-top:54px;font-size:11px;color:#879b9f;display:flex;justify-content:space-between;letter-spacing:1px}
+@media(max-width:760px){main{padding:28px 22px}.grid{grid-template-columns:1fr;gap:36px;margin-top:32px}h1{font-size:48px}.intro{max-width:none}.ticket{max-width:340px;margin-top:26px}.footer{gap:20px}.scene{min-height:220px}.open{white-space:nowrap}}
+</style>
+<main>
+<header><div class="brand">YESTERDAY STORE / 昨日便利店</div><div class="open">记忆不打烊</div></header>
+<div class="grid"><section><div class="eyebrow">一场关于守约的时间循环</div><h1>货架会复原，<br>他<span>记得</span>你。</h1><p class="intro">门外的雨下了很久。你可以借一把伞，也可以偷走铃铛。<br>当你回到昨天，店主会怎么迎接你？</p><div class="ticket"><b>昨日便利店 / RECEIPT</b><p>雨伞 × 1　铃铛 × 1<br>昨日可以重来，承诺不能退货。</p><small>请保留你的玩家编号。换一个会话，故事仍会继续。</small></div></section>
+<section class="play"><div class="play-head"><span>柜台 · 店主在等你</span><span id="day">第一个昨天</span></div><div class="scene" id="scene">你推开门，铃铛没有响。
+
+店主从报纸后抬起头：“又见面了……或者，这是第一次？”
+
+点击「观察」，开始你的第一个昨天。</div><div class="controls"><label class="label" for="player">玩家编号 · 相同编号会接续记忆</label><input id="player" maxlength="64" autocomplete="off" spellcheck="false"><div class="buttons" id="buttons"></div><div class="hint">不必急着通关。尝试不同选择，看店主记住了什么。</div><div class="status" id="status" role="status" aria-live="polite"></div></div></section></div>
+<div class="footer"><span>雨一直下，记忆不打烊。</span><span>OceanBase 2026 · Just for Fun</span></div>
+</main>
+<script>
+const $=id=>document.getElementById(id), actions=['观察','借伞','还伞','偷铃','道歉','回到昨天','敲铃'];
+$('player').value=localStorage.getItem('yesterday-player')||'visitor-'+crypto.randomUUID().slice(0,8);
+for(const action of actions){const b=document.createElement('button');b.textContent=action;b.dataset.action=action;b.onclick=()=>play(action);$('buttons').append(b)}
+async function play(action){
+ const player=$('player').value.trim();if(!/^[a-zA-Z0-9_-]{1,64}$/.test(player)){$('status').textContent='玩家编号请使用字母、数字、横线或下划线。';return}
+ localStorage.setItem('yesterday-player',player);document.querySelectorAll('button,input').forEach(e=>e.disabled=true);$('status').textContent='雨声停了一下，店主正在想……';
+ try{const r=await fetch('/play',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({player,action})});const data=await r.json();if(!r.ok)throw Error(data.detail||'暂时无法继续');$('scene').textContent=data.answer;$('day').textContent=data.state.escaped?'明天见':'第 '+data.state.day+' 个昨天';$('status').textContent=data.state.escaped?'故事已经走到明天。更换玩家编号可以体验另一种选择。':'这次相遇，店主记住了。'}catch(e){$('status').textContent=e.message}finally{document.querySelectorAll('button,input').forEach(e=>e.disabled=false)}
+}
+</script>
+</html>

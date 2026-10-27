@@ -1,0 +1,15 @@
+{
+  "model": "mlx-community/Qwen3-1.7B-4bit",
+  "revision": "3b1b1768f8f8cf8351c712464f906e86c2b8269e",
+  "model_safetensors_sha256": "0e86d9677e519323849eac1bc272caae88567a481ff188c431f70be543d9995f",
+  "weight_bytes": 968080210,
+  "runtime": {
+    "mlx-lm": "0.32.2",
+    "mlx": "0.32.4",
+    "transformers": "5.21.0"
+  },
+  "platform": "macOS Apple Silicon",
+  "inference_endpoint": "loopback only",
+  "dify": "1.9.2",
+  "powercontext_commit": "d0fd77f63a096c70602dea4c210d99b9dc67b146"
+}

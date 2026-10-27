@@ -1,0 +1,442 @@
+version: 0.4.0
+kind: app
+dependencies: []
+app:
+  name: 昨日便利店
+  description: 货架每天复原，店主却记得你。借伞、守约、回到昨天，试着打开通往明日的门。
+  mode: workflow
+  icon: 🏪
+  icon_background: '#FFF4DE'
+  use_icon_as_answer_icon: false
+workflow:
+  graph:
+    nodes:
+    - id: start
+      type: custom
+      position:
+        x: 0
+        y: 240
+      positionAbsolute:
+        x: 0
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: start
+        title: 选择行动
+        desc: ''
+        selected: false
+        variables:
+        - variable: player
+          label: 玩家编号（跨会话保持相同）
+          type: text-input
+          required: true
+          max_length: 64
+          options: []
+        - variable: action
+          label: 这一次，你怎么做？
+          type: select
+          required: true
+          options:
+          - 观察
+          - 借伞
+          - 还伞
+          - 偷铃
+          - 道歉
+          - 回到昨天
+          - 敲铃
+    - id: recall
+      type: custom
+      position:
+        x: 310
+        y: 240
+      positionAbsolute:
+        x: 310
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: http-request
+        title: 读取店主的记忆
+        desc: ''
+        selected: false
+        method: get
+        url: '{{#env.STORE_URL#}}/players/{{#start.player#}}'
+        body:
+          type: none
+          data: []
+        authorization: &id001
+          type: no-auth
+          config: null
+        headers: 'Authorization:Bearer {{#env.STORE_TOKEN#}}
+
+          Content-Type:application/json'
+        params: ''
+        timeout: &id002
+          connect: 10
+          read: 60
+          write: 30
+        retry_config: &id003
+          retry_enabled: false
+          max_retries: 1
+          retry_interval: 1000
+        ssl_verify: true
+        variables: &id004 []
+    - id: rules
+      type: custom
+      position:
+        x: 620
+        y: 240
+      positionAbsolute:
+        x: 620
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: code
+        title: 时间循环与选择规则
+        desc: ''
+        selected: false
+        code_language: python3
+        code: "\"\"\"昨日便利店的规则；由 Dify Code 节点执行，不调用模型或数据库。\"\"\"\n\nimport json\n\n\
+          \ndef initial_state():\n    return {\n        \"day\": 1,\n        \"trust\"\
+          : 0,\n        \"debt\": False,\n        \"umbrella\": False,\n        \"\
+          bell\": False,\n        \"escaped\": False,\n    }\n\n\ndef main(snapshot:\
+          \ str, action: str, request_id: str) -> dict:\n    loaded = json.loads(snapshot)\n\
+          \    state = dict(loaded.get(\"state\") or initial_state())\n    before\
+          \ = dict(state)\n    action = action.strip()\n    allowed = [\"观察\", \"\
+          借伞\", \"还伞\", \"偷铃\", \"道歉\", \"回到昨天\", \"敲铃\"]\n    if action not in allowed:\n\
+          \        raise ValueError(\"请选择：\" + \"、\".join(allowed))\n    if state[\"\
+          escaped\"]:\n        story = \"门外已经是明天。店主把营业牌翻过来：有些承诺，连时间都不能退货。你已通关；换一个玩家编号可开始新故事。\"\
+          \n    elif action == \"观察\":\n        story = \"货架上只有一把雨伞、一只铃铛和一张写着‘昨日’的收据。门外永远下雨。店主说：借的东西要还，偷的东西会记账。\"\
+          \n        if state[\"day\"] > 1 and state[\"debt\"]:\n            story\
+          \ += \" 他忽然按住铃铛：昨天的账，我可没忘。\"\n        elif state[\"day\"] > 1 and state[\"\
+          trust\"]:\n            story += \" 他把铃铛推向你：昨天还伞的人，今天可以试试这个。\"\n    elif\
+          \ action == \"借伞\":\n        if state[\"debt\"]:\n            story = \"\
+          店主把伞收回柜台：昨天偷走的铃铛还记在账上。先说清楚，再谈借。\"\n        elif state[\"umbrella\"]:\n \
+          \           story = \"你已经借了一把伞。便利店没有第二个昨天可供你打包。\"\n        else:\n     \
+          \       state[\"umbrella\"] = True\n            story = \"你借走雨伞。雨落在伞面上，声音像倒着走的秒针。店主在收据上写下：待归还。\"\
+          \n    elif action == \"还伞\":\n        if state[\"umbrella\"]:\n        \
+          \    state[\"umbrella\"] = False\n            state[\"trust\"] = min(3,\
+          \ state[\"trust\"] + 1)\n            story = \"你把雨伞还给店主。他擦掉收据上的欠条：即使明天变回昨天，我也会记得你守过约。\"\
+          \n        else:\n            story = \"你两手空空。店主笑了：不能把一句‘我还过了’当雨伞归还。\"\n\
+          \    elif action == \"偷铃\":\n        state[\"bell\"] = True\n        state[\"\
+          debt\"] = True\n        state[\"trust\"] = 0\n        story = \"铃铛进了你的口袋，整家店突然安静。店主没有拦你，只在看不见的账本上记了一笔。\"\
+          \n    elif action == \"道歉\":\n        if state[\"debt\"]:\n            state[\"\
+          debt\"] = False\n            state[\"bell\"] = False\n            story\
+          \ = \"你承认偷铃。店主合上账本：记得错误，是为了给改正留个位置。欠账清了，信任要重新积攒。\"\n        else:\n    \
+          \        story = \"店主递来一张空白收据：你没有欠账，不必替一个还没发生的错误道歉。\"\n    elif action ==\
+          \ \"回到昨天\":\n        if state[\"umbrella\"]:\n            state[\"debt\"\
+          ] = True\n            state[\"trust\"] = 0\n        state[\"day\"] += 1\n\
+          \        state[\"umbrella\"] = False\n        state[\"bell\"] = False\n\
+          \        story = \"你撕掉收据。货架和雨声恢复原样，口袋也空了。\"\n        story += (\n      \
+          \      \"店主却说：昨天没结清的账，还在。\"\n            if state[\"debt\"]\n          \
+          \  else \"店主却认出了你：时间能重来，守约不会白费。\"\n            if state[\"trust\"]\n   \
+          \         else \"店主看了看你：又见面了。\"\n        )\n    else:\n        if state[\"\
+          debt\"]:\n            story = \"铃响了一半就停住了。门后传来一句话：先结昨天的账。\"\n        elif\
+          \ state[\"day\"] < 2:\n            story = \"铃声把雨震停了一秒。店主提醒：先留下一个值得我记住的昨天，再回来。\"\
+          \n        elif state[\"trust\"] < 1:\n            story = \"铃铛没有声音。店主说：门只为守过约、而且敢回头的人打开。\"\
+          \n        else:\n            state[\"escaped\"] = True\n            story\
+          \ = \"铃声终于向前走了。店主认出了昨天还伞的你，把门牌翻成‘明日’。你带走的不是雨伞，是一次没有被时间抹掉的信任。【通关：守约的人】\"\n\
+          \    if state[\"escaped\"]:\n        choices = []\n    elif state[\"debt\"\
+          ]:\n        choices = [\"观察\", \"道歉\", \"回到昨天\", \"敲铃\"]\n    else:\n  \
+          \      choices = [\n            \"观察\",\n            \"还伞\" if state[\"\
+          umbrella\"] else \"借伞\",\n            \"回到昨天\",\n            \"敲铃\",\n \
+          \           \"偷铃\",\n        ]\n    result = {\n        \"request_id\":\
+          \ request_id,\n        \"expected_revision\": loaded[\"revision\"],\n  \
+          \      \"action\": action,\n        \"state\": state,\n        \"story\"\
+          : story,\n        \"choices\": choices,\n        \"memory_effect\": {\n\
+          \            key: {\"before\": before[key], \"after\": state[key]}\n   \
+          \         for key in state\n            if state[key] != before[key]\n \
+          \       },\n    }\n    return {\"transition\": json.dumps(result, ensure_ascii=False),\
+          \ \"story\": story}\n"
+        variables:
+        - variable: snapshot
+          value_selector:
+          - recall
+          - body
+          value_type: string
+        - variable: action
+          value_selector:
+          - start
+          - action
+          value_type: string
+        - variable: request_id
+          value_selector:
+          - sys
+          - workflow_run_id
+          value_type: string
+        outputs:
+          transition:
+            type: string
+            children: null
+          story:
+            type: string
+            children: null
+    - id: commit
+      type: custom
+      position:
+        x: 930
+        y: 240
+      positionAbsolute:
+        x: 930
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: http-request
+        title: 把本次选择写入 PowerContext
+        desc: ''
+        selected: false
+        method: post
+        url: '{{#env.STORE_URL#}}/players/{{#start.player#}}/commit'
+        body:
+          type: raw-text
+          data:
+          - type: text
+            key: ''
+            value: '{{#rules.transition#}}'
+        authorization: *id001
+        headers: 'Authorization:Bearer {{#env.STORE_TOKEN#}}
+
+          Content-Type:application/json'
+        params: ''
+        timeout: *id002
+        retry_config: *id003
+        ssl_verify: true
+        variables: *id004
+    - id: narrate
+      type: custom
+      position:
+        x: 1240
+        y: 240
+      positionAbsolute:
+        x: 1240
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: http-request
+        title: 根据往事即兴生成店主台词
+        desc: ''
+        selected: false
+        method: post
+        url: '{{#env.STORE_URL#}}/narrate'
+        body:
+          type: raw-text
+          data:
+          - type: text
+            key: ''
+            value: '{"saved":{{#commit.body#}},"past":{{#recall.body#}}}'
+        authorization: *id001
+        headers: 'Authorization:Bearer {{#env.STORE_TOKEN#}}
+
+          Content-Type:application/json'
+        params: ''
+        timeout: *id002
+        retry_config: *id003
+        ssl_verify: true
+        variables: *id004
+    - id: render
+      type: custom
+      position:
+        x: 1550
+        y: 240
+      positionAbsolute:
+        x: 1550
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: code
+        title: 呈现剧情与记忆回声
+        desc: ''
+        selected: false
+        code_language: python3
+        variables:
+        - variable: body
+          value_selector:
+          - commit
+          - body
+          value_type: string
+        - variable: status
+          value_selector:
+          - commit
+          - status_code
+          value_type: number
+        - variable: narration
+          value_selector:
+          - narrate
+          - body
+          value_type: string
+        code: "import json\n\ndef main(body: str, status: int, narration: str) ->\
+          \ dict:\n    if status != 200:\n        raise ValueError(\"记忆没有保存成功，请刷新重试。HTTP\
+          \ \" + str(status))\n    saved = json.loads(body)\n    event = saved[\"\
+          event\"]\n    state = event[\"state\"]\n    text = \"第 \" + str(state[\"\
+          day\"]) + \" 个昨天\\n\\n\" + event[\"story\"]\n    voice = json.loads(narration)\n\
+          \    text += \"\\n\\n店主的话：\" + voice[\"flavor\"]\n    if event[\"choices\"\
+          ]:\n        text += \"\\n\\n接下来：\" + \" / \".join(event[\"choices\"])\n\
+          \    return {\"answer\": text, \"memory_receipt\": json.dumps(saved[\"citation\"\
+          ], ensure_ascii=False), \"state\": json.dumps(state, ensure_ascii=False),\
+          \ \"model_used\": str(voice[\"used_model\"]).lower()}\n"
+        outputs:
+          answer:
+            type: string
+            children: null
+          memory_receipt:
+            type: string
+            children: null
+          state:
+            type: string
+            children: null
+          model_used:
+            type: string
+            children: null
+    - id: end
+      type: custom
+      position:
+        x: 1860
+        y: 240
+      positionAbsolute:
+        x: 1860
+        y: 240
+      width: 244
+      height: 90
+      sourcePosition: right
+      targetPosition: left
+      data:
+        type: end
+        title: 店主的回答
+        desc: ''
+        selected: false
+        outputs:
+        - variable: answer
+          value_selector:
+          - render
+          - answer
+          value_type: string
+        - variable: memory_receipt
+          value_selector:
+          - render
+          - memory_receipt
+          value_type: string
+        - variable: state
+          value_selector:
+          - render
+          - state
+          value_type: string
+        - variable: model_used
+          value_selector:
+          - render
+          - model_used
+          value_type: string
+    edges:
+    - id: start-recall
+      source: start
+      sourceHandle: source
+      target: recall
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: start
+        targetType: http-request
+        isInIteration: false
+    - id: recall-rules
+      source: recall
+      sourceHandle: source
+      target: rules
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+    - id: rules-commit
+      source: rules
+      sourceHandle: source
+      target: commit
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: code
+        targetType: http-request
+        isInIteration: false
+    - id: commit-narrate
+      source: commit
+      sourceHandle: source
+      target: narrate
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: http-request
+        targetType: http-request
+        isInIteration: false
+    - id: narrate-render
+      source: narrate
+      sourceHandle: source
+      target: render
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+    - id: render-end
+      source: render
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: code
+        targetType: end
+        isInIteration: false
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.7
+  environment_variables:
+  - id: store-url
+    name: STORE_URL
+    value: http://host.docker.internal:8010
+    value_type: string
+    selector:
+    - env
+    - STORE_URL
+    description: Dify 可访问的记忆网关地址
+  - id: store-token
+    name: STORE_TOKEN
+    value: ''
+    value_type: secret
+    selector:
+    - env
+    - STORE_TOKEN
+    description: 在导入后填写本地随机密钥
+  conversation_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
