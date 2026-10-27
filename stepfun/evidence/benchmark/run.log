@@ -1,0 +1,20 @@
+LOADED fp32-webgpu-b1 {"backend":"webgpu","dtype":"fp32","fallbackReason":null,"adapter":{"vendor":"apple","architecture":"metal-3","description":""},"model":"Xenova/all-MiniLM-L6-v2","revision":"751bff37182d3f1213fa05d7196b954e230abad9","dimension":384,"loadMs":490.21000000089407,"modelFetchMs":64.19500000029802,"cached":false}
+ROUND fp32-webgpu-b1 0 213 1,1,1,1,1,1
+ROUND fp32-webgpu-b1 1 167 1,1,1,1,1,1
+ROUND fp32-webgpu-b1 2 176 1,1,1,1,1,1
+ROUND fp32-webgpu-b1 3 178 1,1,1,1,1,1
+LOADED fp16-webgpu-b1 {"backend":"webgpu","dtype":"fp16","fallbackReason":null,"adapter":{"vendor":"apple","architecture":"metal-3","description":""},"model":"Xenova/all-MiniLM-L6-v2","revision":"751bff37182d3f1213fa05d7196b954e230abad9","dimension":384,"loadMs":342.5249999985099,"modelFetchMs":41.82999999821186,"cached":false}
+ROUND fp16-webgpu-b1 0 197 1,1,1,1,1,1
+ROUND fp16-webgpu-b1 1 188 1,1,1,1,1,1
+ROUND fp16-webgpu-b1 2 161 1,1,1,1,1,1
+ROUND fp16-webgpu-b1 3 167 1,1,1,1,1,1
+LOADED fp16-webgpu-b8 {"backend":"webgpu","dtype":"fp16","fallbackReason":null,"adapter":{"vendor":"apple","architecture":"metal-3","description":""},"model":"Xenova/all-MiniLM-L6-v2","revision":"751bff37182d3f1213fa05d7196b954e230abad9","dimension":384,"loadMs":336.14500000327826,"modelFetchMs":47.86500000208616,"cached":false}
+ROUND fp16-webgpu-b8 0 81 1,1,1,1,1,1
+ROUND fp16-webgpu-b8 1 76 1,1,1,1,1,1
+ROUND fp16-webgpu-b8 2 88 1,1,1,1,1,1
+ROUND fp16-webgpu-b8 3 42 1,1,1,1,1,1
+LOADED int8-wasm-b8 {"backend":"wasm","dtype":"q8","fallbackReason":"已选择 WASM / INT8 验证模式。","adapter":null,"model":"Xenova/all-MiniLM-L6-v2","revision":"751bff37182d3f1213fa05d7196b954e230abad9","dimension":384,"loadMs":287.41499999910593,"modelFetchMs":31.88000000268221,"cached":false}
+ROUND int8-wasm-b8 0 471 1,1,1,1,1,1
+ROUND int8-wasm-b8 1 442 1,1,1,1,1,1
+ROUND int8-wasm-b8 2 444 1,1,1,1,1,1
+ROUND int8-wasm-b8 3 445 1,1,1,1,1,1

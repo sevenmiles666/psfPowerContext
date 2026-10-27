@@ -1,0 +1,103 @@
+{
+  "started": "2026-10-27T20:51:50.655Z",
+  "checks": [
+    "UI: continuous import and duplicate upsert keep count at two",
+    "new data searchable after explicit index refresh",
+    "collection B never returns collection A documents",
+    "reload restores selected collection and readable title",
+    "UI: switching back restores the correct document set",
+    "390px mobile layout has no horizontal overflow",
+    "invalid vector dimension rejected before database query",
+    "UI: selecting two files imports both after the file picker resets",
+    "no WebGPU adapter: automatic WASM/INT8 import and hybrid search succeed, UI reports WASM"
+  ],
+  "pageErrors": [],
+  "externalRequests": [],
+  "invalidVector": {
+    "status": 400,
+    "body": {
+      "error": "需要 384 维有效向量"
+    }
+  },
+  "fallbackEnvironment": {
+    "adapterAvailable": false
+  },
+  "fallbackLoad": {
+    "backend": "wasm",
+    "dtype": "q8",
+    "fallbackReason": "此环境没有就绪的 WebGPU，已自动使用 WASM / INT8。",
+    "adapter": null,
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "dimension": 384,
+    "loadMs": 315.6050000041723,
+    "modelFetchMs": 39.28999999910593,
+    "cached": false
+  },
+  "fallbackImport": {
+    "imported": 1,
+    "count": 3,
+    "writeMs": 18.227125000033993,
+    "refreshMs": 522.1639170000562,
+    "refreshed": true,
+    "collection": "pages_84767aa3a820034baa84e154",
+    "stage": "import",
+    "documents": 1,
+    "loadMs": 0,
+    "embeddingMs": 28.259999997913837,
+    "totalMs": 591.445000000298,
+    "backend": "wasm",
+    "dtype": "q8",
+    "batchSize": 8
+  },
+  "fallbackSearch": {
+    "collection": "pages_84767aa3a820034baa84e154",
+    "retrievalMs": 33.78783400001703,
+    "operation": "seekdb Collection.hybridSearch / DBMS_HYBRID_SEARCH + RRF",
+    "results": [
+      {
+        "id": "fallback",
+        "text": "A WASM fallback document about ultraviolet lighthouse maintenance.",
+        "metadata": {
+          "part": 1,
+          "title": "降级验证",
+          "source": "浏览器验收"
+        },
+        "distance": 0.0328
+      },
+      {
+        "id": "0a5ce5543038825b18f01c03c23852b0150d9499977aa633d64048c99fb659e0",
+        "text": "The ultraviolet lighthouse sentinel records the evening tide every hour. The lighthouse uses an ultraviolet sensor to warn ships.",
+        "metadata": {
+          "part": 1,
+          "title": "灯塔",
+          "source": "灯塔.txt"
+        },
+        "distance": 0.0323
+      },
+      {
+        "id": "0fc95a23d3c0f6c7017c55f0b9b5c499728f78936a1f3de7a0923267c10ec429",
+        "text": "Moonlight observatory scientists count meteor showers every winter. They use a telescope to track bright meteors.",
+        "metadata": {
+          "part": 1,
+          "title": "月光",
+          "source": "月光.md"
+        },
+        "distance": 0.0159
+      }
+    ],
+    "metrics": {
+      "stage": "search",
+      "collection": "pages_84767aa3a820034baa84e154",
+      "query": "ultraviolet lighthouse maintenance",
+      "queryEmbeddingMs": 10.714999996125698,
+      "loadMs": 0,
+      "retrievalMs": 33.78783400001703,
+      "totalMs": 78.63000000268221,
+      "backend": "wasm",
+      "dtype": "q8"
+    }
+  },
+  "passed": true,
+  "finished": "2026-10-27T20:52:03.981Z"
+}

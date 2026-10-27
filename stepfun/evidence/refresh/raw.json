@@ -1,0 +1,83 @@
+{
+  "started": "2026-10-27T20:28:36.814Z",
+  "documents": 24,
+  "rounds": [
+    {
+      "round": 0,
+      "each-document": {
+        "writeMs": 463.1792059998843,
+        "refreshMs": 14412.191085000115,
+        "totalMs": 15573.234999999404,
+        "refreshCalls": 24,
+        "count": 24,
+        "collection": "pages_326be84ceaccd27938f2d73b"
+      },
+      "once-per-import": {
+        "writeMs": 291.9875839999877,
+        "refreshMs": 823.634040999983,
+        "totalMs": 1147.070000000298,
+        "refreshCalls": 1,
+        "count": 24,
+        "collection": "pages_01917519ddb19c2208432ffb"
+      }
+    },
+    {
+      "round": 1,
+      "each-document": {
+        "writeMs": 534.5178739998955,
+        "refreshMs": 14814.511161000002,
+        "totalMs": 16345.140000000596,
+        "refreshCalls": 24,
+        "count": 24,
+        "collection": "pages_a93f4fbf2cc20b3a6410dd4c"
+      },
+      "once-per-import": {
+        "writeMs": 287.51295900001423,
+        "refreshMs": 719.3965409999946,
+        "totalMs": 1033.6450000032783,
+        "refreshCalls": 1,
+        "count": 24,
+        "collection": "pages_ad0d14f584c271da631ef197"
+      }
+    },
+    {
+      "round": 2,
+      "each-document": {
+        "writeMs": 549.1103340001428,
+        "refreshMs": 14005.46008300007,
+        "totalMs": 15529.805000007153,
+        "refreshCalls": 24,
+        "count": 24,
+        "collection": "pages_eece4d3627a9652aa42c2ecd"
+      },
+      "once-per-import": {
+        "writeMs": 303.68820899998536,
+        "refreshMs": 422.7203749999753,
+        "totalMs": 753.6500000059605,
+        "refreshCalls": 1,
+        "count": 24,
+        "collection": "pages_9bd8dad5d84acc2d558c563a"
+      }
+    }
+  ],
+  "embedding": {
+    "backend": "webgpu",
+    "dtype": "fp16",
+    "fallbackReason": null,
+    "adapter": {
+      "vendor": "apple",
+      "architecture": "metal-3",
+      "description": ""
+    },
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "dimension": 384,
+    "loadMs": 477.5949999988079,
+    "modelFetchMs": 111.32500000298023,
+    "cached": false,
+    "embeddingMs": 102.60499999672174,
+    "batchSize": 8
+  },
+  "passed": true,
+  "finished": "2026-10-27T20:29:31.572Z"
+}

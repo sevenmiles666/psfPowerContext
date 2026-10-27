@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>本页 · 把资料留在手边</title></head>
+<body>
+  <aside>
+    <a class="brand" href="/" aria-label="本页首页"><span class="mark">页</span><span>本页<small>LOCAL PAGES</small></span></a>
+    <p class="sidebar-caption">你的资料库</p>
+    <nav id="collections" aria-label="资料库"></nav>
+    <button id="new-collection" class="quiet">＋ 新建资料库</button>
+    <div class="sidebar-bottom"><span class="online-dot"></span> 本地推理，资料在手边<p>文档和查询都在浏览器里向量化。<br>检索交给你自己的 seekdb。</p><a href="#about">关于这间小书房 ↗</a></div>
+  </aside>
+  <main>
+    <header><span id="breadcrumb">资料库 / 我的资料</span><span id="backend" class="chip">模型尚未加载</span></header>
+    <section class="hero"><p class="eyebrow">LESS SEARCHING. MORE FINDING.</p><h1>翻过的页，<br><em>都能找回来。</em></h1><p class="intro">收好笔记、摘录和灵感。用一句话，找到你记得的那一段。</p></section>
+    <section class="workspace" aria-label="知识库工作区">
+      <div class="section-top"><div><h2 id="library-title">我的资料</h2><p id="document-count">正在连接资料库…</p></div><div class="actions"><button id="sample" class="quiet">放入示例资料</button><button id="import" class="primary">＋ 导入文本</button><input id="file" type="file" accept=".txt,.md,.text" multiple hidden></div></div>
+      <div id="drop" class="drop"><span class="paper-icon">↧</span><div><strong>把资料轻轻放在这里</strong><p>拖入 TXT / Markdown，也可以点击「导入文本」</p></div><span class="drop-note">支持连续导入</span></div>
+      <form id="search-form"><label for="query">想找什么？</label><div class="search-box"><span>⌕</span><input id="query" placeholder="例如：How can I make database queries faster?" autocomplete="off" maxlength="1000"><button type="submit">找一找 <span>↗</span></button></div></form>
+      <div class="status-line"><p id="status" role="status">先导入一份资料，开启你的第一场检索。</p><span id="timing"></span></div>
+      <div id="results"><div class="empty"><span>⌁</span><h3>答案，或许就在你读过的地方。</h3><p>搜索结果会带着原文和出处，出现在这里。</p></div></div>
+    </section>
+    <section id="about" class="about"><div><span class="mini-index">01 / 留在本地</span><h3>向量化，无需云端 API。</h3><p>MiniLM 在你的浏览器运行。支持时使用 WebGPU / FP16；不可用时自动切换到 WASM / INT8。</p></div><div><span class="mini-index">02 / 找到上下文</span><h3>关键词和含义，一起找。</h3><p>seekdb 同时完成向量、全文检索与融合排序。模型主要适合英文资料，示例与质量评测也使用英文。</p></div></section>
+    <footer><span>本页 · 给知识一个可以回来的地方</span><button id="export-metrics" class="quiet">导出本次运行记录 ↗</button></footer>
+  </main>
+  <dialog id="new-dialog"><form method="dialog"><h2>给资料一个新书架</h2><p>一个主题，一间小书房。</p><input id="new-name" maxlength="80" placeholder="例如：毕业设计"><div class="dialog-actions"><button value="cancel" class="quiet">暂时不要</button><button id="create-confirm" value="default" class="primary">创建资料库</button></div></form></dialog>
+  <script type="module" src="/app.js"></script>
+</body></html>

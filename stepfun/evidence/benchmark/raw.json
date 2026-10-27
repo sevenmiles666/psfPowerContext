@@ -1,0 +1,2964 @@
+{
+  "started": "2026-10-27T20:52:09.533Z",
+  "corpus": [
+    {
+      "id": "db-index",
+      "title": "A shortcut through the database",
+      "text": "A database index is like a book index. It lets a query locate matching rows without scanning every record. Index columns used in WHERE filters and JOIN conditions, then use EXPLAIN to inspect the query plan.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "db-plan",
+      "title": "Read a query plan before guessing",
+      "text": "EXPLAIN shows whether a database query scans a whole table or uses an index. Slow queries often improve after an appropriate index, fewer scanned rows, and up-to-date statistics. Measure latency before and after each change.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "plants-water",
+      "title": "Water by the soil, not the calendar",
+      "text": "Houseplants need water when the upper soil feels dry. Insert a finger into the soil before watering. Yellow leaves and soggy soil often indicate overwatering. A pot with drainage holes protects roots.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "plants-light",
+      "title": "A brighter place for new leaves",
+      "text": "Most indoor plants prefer bright indirect sunlight. Rotate the pot for even growth. Direct afternoon sun may burn delicate leaves. Light requirements differ between a cactus and a shade-loving fern.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "sleep-routine",
+      "title": "A gentler evening routine",
+      "text": "Going to bed and waking up at consistent times helps the body clock. A dark, cool bedroom and less bright light in the evening can improve sleep. Avoid caffeine late in the day.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "sleep-caffeine",
+      "title": "Why late coffee stays with you",
+      "text": "Caffeine can remain active for several hours. Drinking coffee late in the afternoon may make it harder to fall asleep at night. Try moving the final cup earlier and keep a consistent bedtime.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "git-branch",
+      "title": "A separate branch for each idea",
+      "text": "Git branches keep experimental changes separate from the main line. Create a branch, make small commits, run tests, and open a pull request for review. Merge the branch after validation.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "git-commit",
+      "title": "Commits that tell a clear story",
+      "text": "A useful Git commit groups one coherent change with a message explaining the reason. Review the diff before committing and keep generated files and secrets out of the repository.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "bread-proof",
+      "title": "Give the dough enough time",
+      "text": "Bread dough rises as yeast produces gas during fermentation. A warm place speeds proofing, while a refrigerator slows it down. Dough that roughly doubles in volume is often ready for the next stage.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "bread-crust",
+      "title": "Steam makes a crisp bread crust",
+      "text": "Steam in the early part of baking helps dough expand before the crust sets. A preheated covered baking pot traps moisture. Remove the lid later to brown the crust.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "memory-recall",
+      "title": "Remember by trying to recall",
+      "text": "Active recall means trying to retrieve information before looking at the answer. Practice questions and flashcards reveal gaps in knowledge. Explaining an idea from memory often works better than rereading notes.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "memory-spacing",
+      "title": "Leave a little space between reviews",
+      "text": "Spaced repetition reviews material over increasing intervals. Revisit difficult flashcards more often and easy cards less often. Combining spaced review with active recall improves long-term retention.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "bike-tire",
+      "title": "A tire that holds the road",
+      "text": "Check bicycle tire pressure before a long ride. Use the recommended pressure range printed on the tire. Underinflation can cause pinch punctures, while excessive pressure reduces comfort.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "bike-chain",
+      "title": "A quiet, clean bicycle chain",
+      "text": "Clean dirt from the bicycle chain and apply a small amount of chain lubricant. Wipe excess lubricant away because it attracts grit. Regular maintenance reduces wear and keeps shifting smooth.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "raincoat",
+      "title": "Packing for a rainy walk",
+      "text": "A light waterproof jacket and shoes with good traction make a rainy walk easier. Pack electronics in a dry bag. Check the weather forecast and avoid flooded trails.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "tea",
+      "title": "Green tea likes gentler water",
+      "text": "Green tea can taste bitter when brewed with boiling water for too long. Let the water cool slightly and use a shorter steeping time. Adjust leaf quantity and water temperature to taste.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "backups",
+      "title": "A copy is not yet a tested backup",
+      "text": "A reliable backup should be stored separately from the original data. Test restoration regularly. Keep several historical versions so accidental deletion or corruption does not overwrite the only good copy.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "transactions",
+      "title": "Finish a transaction as one unit",
+      "text": "A database transaction groups related changes into an atomic unit. Commit when all steps succeed and roll back on failure. Short transactions reduce the time that locks block other work.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "stretching",
+      "title": "Pause after a long hour of sitting",
+      "text": "Stand up and move briefly during long desk sessions. Gentle shoulder and hip stretches can reduce stiffness. Adjust the chair and monitor so the body can rest in a comfortable position.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "photos",
+      "title": "Softer light for portraits",
+      "text": "Window light and an overcast sky produce soft shadows in portraits. Turn the subject slightly toward the light. Watch the background and keep the focus on the eyes.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "compost",
+      "title": "A balanced compost pile",
+      "text": "Compost needs a mixture of nitrogen-rich greens and carbon-rich browns. Vegetable scraps provide greens, while dry leaves provide browns. Turn the pile occasionally and keep it moist rather than soaked.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "budget",
+      "title": "Give every expense a clear home",
+      "text": "Track recurring bills and variable spending in a monthly budget. Set aside an emergency fund before planning optional purchases. Reviewing spending categories each week makes small changes easier.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "vectors",
+      "title": "Search by meaning with vectors",
+      "text": "Embedding models represent text as numerical vectors. Nearby vectors often describe related meanings even when exact words differ. A vector database stores embeddings and retrieves nearby documents.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    },
+    {
+      "id": "hybrid",
+      "title": "Combine meaning with exact words",
+      "text": "Hybrid search combines keyword full-text search and semantic vector search. Reciprocal rank fusion combines ranked candidates inside the database. Exact product names and broader conceptual queries can both benefit.",
+      "source": "本队原创示例摘录",
+      "part": 1
+    }
+  ],
+  "queries": [
+    {
+      "text": "How can I make database queries faster?",
+      "relevant": [
+        "db-index",
+        "db-plan"
+      ]
+    },
+    {
+      "text": "How do I avoid overwatering houseplants?",
+      "relevant": [
+        "plants-water"
+      ]
+    },
+    {
+      "text": "What helps me fall asleep after drinking coffee?",
+      "relevant": [
+        "sleep-routine",
+        "sleep-caffeine"
+      ]
+    },
+    {
+      "text": "How should I use Git branches for an experiment?",
+      "relevant": [
+        "git-branch",
+        "git-commit"
+      ]
+    },
+    {
+      "text": "How can I remember what I studied for longer?",
+      "relevant": [
+        "memory-recall",
+        "memory-spacing"
+      ]
+    },
+    {
+      "text": "Why is my bread dough not rising quickly?",
+      "relevant": [
+        "bread-proof"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "config": {
+        "name": "fp32-webgpu-b1",
+        "dtype": "fp32",
+        "batchSize": 1,
+        "requireGpu": true
+      },
+      "rounds": [
+        {
+          "round": 0,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 460.73399999999674,
+            "refreshMs": 819.2354580000392,
+            "refreshed": true,
+            "collection": "pages_56c2c1882314cfb9e5dd8193",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 212.73000000417233,
+            "totalMs": 1524.945000000298,
+            "backend": "webgpu",
+            "dtype": "fp32",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 12.024999998509884,
+                "loadMs": 0,
+                "retrievalMs": 83.75320799998008,
+                "totalMs": 118.10999999940395,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 8.594999998807907,
+                "loadMs": 0,
+                "retrievalMs": 27.937916999973822,
+                "totalMs": 55.90500000119209,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 10.245000004768372,
+                "loadMs": 0,
+                "retrievalMs": 30.82999999995809,
+                "totalMs": 64.97999999672174,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 8.059999994933605,
+                "loadMs": 0,
+                "retrievalMs": 29.127875000005588,
+                "totalMs": 56.939999997615814,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 8.320000000298023,
+                "loadMs": 0,
+                "retrievalMs": 31.344166999973822,
+                "totalMs": 73.78999999910593,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 11.174999997019768,
+                "loadMs": 0,
+                "retrievalMs": 32.90708299999824,
+                "totalMs": 64.00999999791384,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 314.3364999999758,
+            "refreshMs": 613.678459000017,
+            "refreshed": true,
+            "collection": "pages_56c2c1882314cfb9e5dd8193",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 166.6899999976158,
+            "totalMs": 1118.9099999964237,
+            "backend": "webgpu",
+            "dtype": "fp32",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 10.560000002384186,
+                "loadMs": 0,
+                "retrievalMs": 34.49991600000067,
+                "totalMs": 65.44500000029802,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 5.875,
+                "loadMs": 0,
+                "retrievalMs": 29.755500000028405,
+                "totalMs": 55.53999999910593,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 9.005000002682209,
+                "loadMs": 0,
+                "retrievalMs": 32.73795799998334,
+                "totalMs": 66.75500000268221,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 13.019999995827675,
+                "loadMs": 0,
+                "retrievalMs": 28.650374999968335,
+                "totalMs": 61.770000003278255,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 11.934999994933605,
+                "loadMs": 0,
+                "retrievalMs": 28.5269580000313,
+                "totalMs": 60.269999995827675,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 7.8549999967217445,
+                "loadMs": 0,
+                "retrievalMs": 87.23412500001723,
+                "totalMs": 124.03999999910593,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 380.2963340000133,
+            "refreshMs": 819.2129169999971,
+            "refreshed": true,
+            "collection": "pages_56c2c1882314cfb9e5dd8193",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 175.57500000298023,
+            "totalMs": 1421.7749999985099,
+            "backend": "webgpu",
+            "dtype": "fp32",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 13.734999999403954,
+                "loadMs": 0,
+                "retrievalMs": 36.011666999955196,
+                "totalMs": 73.60999999940395,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 8.265000000596046,
+                "loadMs": 0,
+                "retrievalMs": 32.54587500001071,
+                "totalMs": 62.16499999910593,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 10.645000003278255,
+                "loadMs": 0,
+                "retrievalMs": 31.582958000013605,
+                "totalMs": 62.84000000357628,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 8.714999996125698,
+                "loadMs": 0,
+                "retrievalMs": 31.635708999994677,
+                "totalMs": 62.70500000566244,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 9.899999998509884,
+                "loadMs": 0,
+                "retrievalMs": 46.78558399999747,
+                "totalMs": 76.88500000536442,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 12.580000005662441,
+                "loadMs": 0,
+                "retrievalMs": 32.41195899999002,
+                "totalMs": 65.82999999821186,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 300.8891660000081,
+            "refreshMs": 413.92062500002794,
+            "refreshed": true,
+            "collection": "pages_56c2c1882314cfb9e5dd8193",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 177.67999999970198,
+            "totalMs": 917.2150000035763,
+            "backend": "webgpu",
+            "dtype": "fp32",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 10.58500000089407,
+                "loadMs": 0,
+                "retrievalMs": 37.20566699997289,
+                "totalMs": 73.92499999701977,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 7.384999997913837,
+                "loadMs": 0,
+                "retrievalMs": 33.5731660000165,
+                "totalMs": 63.03000000119209,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 8.489999994635582,
+                "loadMs": 0,
+                "retrievalMs": 34.36508300004061,
+                "totalMs": 64.19499999284744,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 10.490000002086163,
+                "loadMs": 0,
+                "retrievalMs": 32.03795900003752,
+                "totalMs": 62.74500000476837,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 8.524999998509884,
+                "loadMs": 0,
+                "retrievalMs": 30.462249999982305,
+                "totalMs": 60.70000000298023,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_56c2c1882314cfb9e5dd8193",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 8.484999999403954,
+                "loadMs": 0,
+                "retrievalMs": 34.18937499995809,
+                "totalMs": 62.30499999970198,
+                "backend": "webgpu",
+                "dtype": "fp32"
+              }
+            }
+          ]
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "hardwareConcurrency": 10,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "shaderF16": true
+        }
+      },
+      "load": {
+        "backend": "webgpu",
+        "dtype": "fp32",
+        "fallbackReason": null,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "description": ""
+        },
+        "model": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimension": 384,
+        "loadMs": 490.21000000089407,
+        "modelFetchMs": 64.19500000029802,
+        "cached": false
+      },
+      "collection": {
+        "name": "pages_56c2c1882314cfb9e5dd8193",
+        "title": "实测 fp32-webgpu-b1",
+        "count": 24
+      },
+      "summary": {
+        "warmDocumentEmbeddingMs": 175.57500000298023,
+        "warmDocumentsPerSecond": 136.6937206298882,
+        "warmWriteMs": 314.3364999999758,
+        "warmRefreshMs": 613.678459000017,
+        "warmQueryEmbeddingMs": 9.452500000596046,
+        "warmRetrievalMs": 32.64191649999702,
+        "warmEndToEndMs": 62.935000002384186,
+        "recallAt5": 1,
+        "ndcgAt5": 0.986620131524698
+      }
+    },
+    {
+      "config": {
+        "name": "fp16-webgpu-b1",
+        "dtype": "fp16",
+        "batchSize": 1,
+        "requireGpu": true
+      },
+      "rounds": [
+        {
+          "round": 0,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 478.6935830000439,
+            "refreshMs": 621.9818330000271,
+            "refreshed": true,
+            "collection": "pages_f6b184cc1f0f2e083cb92781",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 196.71000000089407,
+            "totalMs": 1336.469999998808,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 11.479999996721745,
+                "loadMs": 0,
+                "retrievalMs": 121.87162500002887,
+                "totalMs": 158.5350000038743,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 11.535000003874302,
+                "loadMs": 0,
+                "retrievalMs": 29.161166000005323,
+                "totalMs": 62.11999999731779,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 12.724999994039536,
+                "loadMs": 0,
+                "retrievalMs": 29.610915999975987,
+                "totalMs": 61.38499999791384,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 9.554999999701977,
+                "loadMs": 0,
+                "retrievalMs": 26.76862499996787,
+                "totalMs": 55.34499999880791,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 9.100000001490116,
+                "loadMs": 0,
+                "retrievalMs": 31.62204099999508,
+                "totalMs": 60.225000001490116,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 10.270000003278255,
+                "loadMs": 0,
+                "retrievalMs": 28.98341700003948,
+                "totalMs": 58.79500000178814,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 263.0088339999784,
+            "refreshMs": 521.7099160000216,
+            "refreshed": true,
+            "collection": "pages_f6b184cc1f0f2e083cb92781",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 188.32999999821186,
+            "totalMs": 1006.3149999976158,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 13.024999998509884,
+                "loadMs": 0,
+                "retrievalMs": 37.16575000004377,
+                "totalMs": 85.24000000208616,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 10.575000002980232,
+                "loadMs": 0,
+                "retrievalMs": 27.449374999967404,
+                "totalMs": 59.100000001490116,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 7.489999994635582,
+                "loadMs": 0,
+                "retrievalMs": 26.499791000038385,
+                "totalMs": 51.610000006854534,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 9.399999998509884,
+                "loadMs": 0,
+                "retrievalMs": 27.24404100002721,
+                "totalMs": 55.19500000029802,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 6.045000001788139,
+                "loadMs": 0,
+                "retrievalMs": 25.795458000036888,
+                "totalMs": 49.809999994933605,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 10.679999999701977,
+                "loadMs": 0,
+                "retrievalMs": 34.45524999999907,
+                "totalMs": 65.56000000238419,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 239.15512499999022,
+            "refreshMs": 538.4375829999917,
+            "refreshed": true,
+            "collection": "pages_f6b184cc1f0f2e083cb92781",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 160.82999999821186,
+            "totalMs": 971.1349999979138,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 13.525000005960464,
+                "loadMs": 0,
+                "retrievalMs": 42.18779199995333,
+                "totalMs": 96.50499999523163,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 5.964999996125698,
+                "loadMs": 0,
+                "retrievalMs": 31.88795800000662,
+                "totalMs": 61.475000001490116,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 9.574999995529652,
+                "loadMs": 0,
+                "retrievalMs": 27.710625000006985,
+                "totalMs": 56.55499999970198,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 6.16499999910593,
+                "loadMs": 0,
+                "retrievalMs": 26.368000000016764,
+                "totalMs": 50.88499999791384,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 8.365000002086163,
+                "loadMs": 0,
+                "retrievalMs": 25.76295800000662,
+                "totalMs": 52.28999999910593,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 11.814999997615814,
+                "loadMs": 0,
+                "retrievalMs": 34.70512499997858,
+                "totalMs": 66.86499999463558,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 250.93041600001743,
+            "refreshMs": 837.8192080000299,
+            "refreshed": true,
+            "collection": "pages_f6b184cc1f0f2e083cb92781",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 166.95500000566244,
+            "totalMs": 1287.2999999970198,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 1
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 12.760000005364418,
+                "loadMs": 0,
+                "retrievalMs": 43.04904200002784,
+                "totalMs": 100.71500000357628,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 10.399999998509884,
+                "loadMs": 0,
+                "retrievalMs": 29.91812500002561,
+                "totalMs": 63.07499999552965,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 12.919999994337559,
+                "loadMs": 0,
+                "retrievalMs": 26.985375000047497,
+                "totalMs": 60.229999996721745,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 12.429999999701977,
+                "loadMs": 0,
+                "retrievalMs": 26.20616699999664,
+                "totalMs": 56.39000000059605,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 7.130000002682209,
+                "loadMs": 0,
+                "retrievalMs": 25.49283399997512,
+                "totalMs": 50.97000000625849,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_f6b184cc1f0f2e083cb92781",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 8.489999994635582,
+                "loadMs": 0,
+                "retrievalMs": 26.587916999997105,
+                "totalMs": 53.270000003278255,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "hardwareConcurrency": 10,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "shaderF16": true
+        }
+      },
+      "load": {
+        "backend": "webgpu",
+        "dtype": "fp16",
+        "fallbackReason": null,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "description": ""
+        },
+        "model": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimension": 384,
+        "loadMs": 342.5249999985099,
+        "modelFetchMs": 41.82999999821186,
+        "cached": false
+      },
+      "collection": {
+        "name": "pages_f6b184cc1f0f2e083cb92781",
+        "title": "实测 fp16-webgpu-b1",
+        "count": 24
+      },
+      "summary": {
+        "warmDocumentEmbeddingMs": 166.95500000566244,
+        "warmDocumentsPerSecond": 143.75131022842092,
+        "warmWriteMs": 250.93041600001743,
+        "warmRefreshMs": 538.4375829999917,
+        "warmQueryEmbeddingMs": 9.987499997019768,
+        "warmRetrievalMs": 27.346707999997307,
+        "warmEndToEndMs": 57.82750000059605,
+        "recallAt5": 1,
+        "ndcgAt5": 0.986620131524698
+      }
+    },
+    {
+      "config": {
+        "name": "fp16-webgpu-b8",
+        "dtype": "fp16",
+        "batchSize": 8,
+        "requireGpu": true
+      },
+      "rounds": [
+        {
+          "round": 0,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 345.09237500000745,
+            "refreshMs": 625.7777079999796,
+            "refreshed": true,
+            "collection": "pages_58fa2393122eda129b046149",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 80.98000000417233,
+            "totalMs": 1076.2950000017881,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 13.950000002980232,
+                "loadMs": 0,
+                "retrievalMs": 89.77624999999534,
+                "totalMs": 146.73000000417233,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 9.03999999910593,
+                "loadMs": 0,
+                "retrievalMs": 31.3514589999686,
+                "totalMs": 62.38499999791384,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 10.435000002384186,
+                "loadMs": 0,
+                "retrievalMs": 30.582374999998137,
+                "totalMs": 62.08500000089407,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 8.354999996721745,
+                "loadMs": 0,
+                "retrievalMs": 29.20316599996295,
+                "totalMs": 64.66500000655651,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 9.680000007152557,
+                "loadMs": 0,
+                "retrievalMs": 26.623916999960784,
+                "totalMs": 56.189999997615814,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 10.465000003576279,
+                "loadMs": 0,
+                "retrievalMs": 29.762542000040412,
+                "totalMs": 59.08500000089407,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 320.4890000000014,
+            "refreshMs": 539.4369170000427,
+            "refreshed": true,
+            "collection": "pages_58fa2393122eda129b046149",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 75.70499999821186,
+            "totalMs": 963.8449999988079,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 11.260000005364418,
+                "loadMs": 0,
+                "retrievalMs": 40.68316600000253,
+                "totalMs": 105.41499999910593,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 11.730000004172325,
+                "loadMs": 0,
+                "retrievalMs": 28.75579199998174,
+                "totalMs": 61.64000000059605,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 14.994999997317791,
+                "loadMs": 0,
+                "retrievalMs": 27.636541999992914,
+                "totalMs": 61.354999996721745,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 12.92000000178814,
+                "loadMs": 0,
+                "retrievalMs": 26.732124999980442,
+                "totalMs": 61.28999999910593,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 7.909999996423721,
+                "loadMs": 0,
+                "retrievalMs": 25.91979099996388,
+                "totalMs": 52.399999998509884,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 8.945000000298023,
+                "loadMs": 0,
+                "retrievalMs": 27.013083999976516,
+                "totalMs": 53.725000001490116,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 239.11087500001304,
+            "refreshMs": 633.102499999979,
+            "refreshed": true,
+            "collection": "pages_58fa2393122eda129b046149",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 88.43500000238419,
+            "totalMs": 991.4149999991059,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 12.780000001192093,
+                "loadMs": 0,
+                "retrievalMs": 47.92116699996404,
+                "totalMs": 105.23500000685453,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 8.859999999403954,
+                "loadMs": 0,
+                "retrievalMs": 30.847665999957826,
+                "totalMs": 66.15999999642372,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 11.300000004470348,
+                "loadMs": 0,
+                "retrievalMs": 29.157458999950904,
+                "totalMs": 62.34499999880791,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 7.594999998807907,
+                "loadMs": 0,
+                "retrievalMs": 26.088749999995343,
+                "totalMs": 54.55499999970198,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 11.484999999403954,
+                "loadMs": 0,
+                "retrievalMs": 24.614999999990687,
+                "totalMs": 54.57500000298023,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 11.160000003874302,
+                "loadMs": 0,
+                "retrievalMs": 26.885958999977447,
+                "totalMs": 56.03000000119209,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 314.382500000007,
+            "refreshMs": 646.3168750000186,
+            "refreshed": true,
+            "collection": "pages_58fa2393122eda129b046149",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 41.67499999701977,
+            "totalMs": 1028.4900000020862,
+            "backend": "webgpu",
+            "dtype": "fp16",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 11.640000000596046,
+                "loadMs": 0,
+                "retrievalMs": 41.28274999995483,
+                "totalMs": 98.1849999949336,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "compost"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 9.350000001490116,
+                "loadMs": 0,
+                "retrievalMs": 28.757500000006985,
+                "totalMs": 59.45000000298023,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 11.339999996125698,
+                "loadMs": 0,
+                "retrievalMs": 28.420665999990888,
+                "totalMs": 61.57500000298023,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 9,
+                "loadMs": 0,
+                "retrievalMs": 26.75474999996368,
+                "totalMs": 54.88499999791384,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 12.494999997317791,
+                "loadMs": 0,
+                "retrievalMs": 25.323334000015166,
+                "totalMs": 55.78999999910593,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_58fa2393122eda129b046149",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 11.224999994039536,
+                "loadMs": 0,
+                "retrievalMs": 25.865250000031665,
+                "totalMs": 55.28999999910593,
+                "backend": "webgpu",
+                "dtype": "fp16"
+              }
+            }
+          ]
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "hardwareConcurrency": 10,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "shaderF16": true
+        }
+      },
+      "load": {
+        "backend": "webgpu",
+        "dtype": "fp16",
+        "fallbackReason": null,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "description": ""
+        },
+        "model": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimension": 384,
+        "loadMs": 336.14500000327826,
+        "modelFetchMs": 47.86500000208616,
+        "cached": false
+      },
+      "collection": {
+        "name": "pages_58fa2393122eda129b046149",
+        "title": "实测 fp16-webgpu-b8",
+        "count": 24
+      },
+      "summary": {
+        "warmDocumentEmbeddingMs": 75.70499999821186,
+        "warmDocumentsPerSecond": 317.0200118957384,
+        "warmWriteMs": 314.382500000007,
+        "warmRefreshMs": 633.102499999979,
+        "warmQueryEmbeddingMs": 11.280000004917383,
+        "warmRetrievalMs": 27.324812999984715,
+        "warmEndToEndMs": 60.37000000104308,
+        "recallAt5": 1,
+        "ndcgAt5": 0.986620131524698
+      }
+    },
+    {
+      "config": {
+        "name": "int8-wasm-b8",
+        "dtype": "q8",
+        "batchSize": 8,
+        "forceWasm": true
+      },
+      "rounds": [
+        {
+          "round": 0,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 307.23983299999963,
+            "refreshMs": 535.6120409999858,
+            "refreshed": true,
+            "collection": "pages_99632e1994bd4fed13f0a6db",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 470.8500000014901,
+            "totalMs": 1366.515000000596,
+            "backend": "wasm",
+            "dtype": "q8",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 15.804999999701977,
+                "loadMs": 0,
+                "retrievalMs": 95.23233300005086,
+                "totalMs": 168.22500000149012,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "budget"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 16.114999994635582,
+                "loadMs": 0,
+                "retrievalMs": 27.400792000000365,
+                "totalMs": 62.13499999791384,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 6.299999997019768,
+                "loadMs": 0,
+                "retrievalMs": 30.869290999951772,
+                "totalMs": 56.314999997615814,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 6.850000001490116,
+                "loadMs": 0,
+                "retrievalMs": 27.027958999969997,
+                "totalMs": 51.74499999731779,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 6.554999999701977,
+                "loadMs": 0,
+                "retrievalMs": 25.961375000013504,
+                "totalMs": 49.96000000089407,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 7.314999997615814,
+                "loadMs": 0,
+                "retrievalMs": 28.103999999992084,
+                "totalMs": 52.61500000208616,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 284.2867499999702,
+            "refreshMs": 825.165083000029,
+            "refreshed": true,
+            "collection": "pages_99632e1994bd4fed13f0a6db",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 442.33000000566244,
+            "totalMs": 1602.6000000014901,
+            "backend": "wasm",
+            "dtype": "q8",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 15.154999993741512,
+                "loadMs": 0,
+                "retrievalMs": 49.07487500004936,
+                "totalMs": 92.4050000011921,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "budget"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 15.53999999910593,
+                "loadMs": 0,
+                "retrievalMs": 32.30745899997419,
+                "totalMs": 69.9400000050664,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 14.440000005066395,
+                "loadMs": 0,
+                "retrievalMs": 27.85825000004843,
+                "totalMs": 60.76500000059605,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 16.729999996721745,
+                "loadMs": 0,
+                "retrievalMs": 25.65625,
+                "totalMs": 61.30000000447035,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 12.394999995827675,
+                "loadMs": 0,
+                "retrievalMs": 24.617624999955297,
+                "totalMs": 54.46500000357628,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 10.659999996423721,
+                "loadMs": 0,
+                "retrievalMs": 26.167499999981374,
+                "totalMs": 56.274999998509884,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 238.34037500002887,
+            "refreshMs": 628.2667909999727,
+            "refreshed": true,
+            "collection": "pages_99632e1994bd4fed13f0a6db",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 443.9150000065565,
+            "totalMs": 1365.8799999952316,
+            "backend": "wasm",
+            "dtype": "q8",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 15.685000002384186,
+                "loadMs": 0,
+                "retrievalMs": 30.76866699999664,
+                "totalMs": 94.6550000011921,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "budget"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 16.46000000089407,
+                "loadMs": 0,
+                "retrievalMs": 26.80958300002385,
+                "totalMs": 62.44500000029802,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 13.419999994337559,
+                "loadMs": 0,
+                "retrievalMs": 25.742542000021785,
+                "totalMs": 56.98499999940395,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 13.044999994337559,
+                "loadMs": 0,
+                "retrievalMs": 25.01687499997206,
+                "totalMs": 55.48499999940395,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 10.734999999403954,
+                "loadMs": 0,
+                "retrievalMs": 24.41208400001051,
+                "totalMs": 52.45000000298023,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 6.274999998509884,
+                "loadMs": 0,
+                "retrievalMs": 27.494707999983802,
+                "totalMs": 52.99000000208616,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "import": {
+            "imported": 24,
+            "count": 24,
+            "writeMs": 232.0039579999866,
+            "refreshMs": 531.9915829999954,
+            "refreshed": true,
+            "collection": "pages_99632e1994bd4fed13f0a6db",
+            "stage": "import",
+            "documents": 24,
+            "loadMs": 0,
+            "embeddingMs": 445.49000000208616,
+            "totalMs": 1231.320000000298,
+            "backend": "wasm",
+            "dtype": "q8",
+            "batchSize": 8
+          },
+          "searches": [
+            {
+              "query": "How can I make database queries faster?",
+              "ids": [
+                "db-plan",
+                "hybrid",
+                "db-index",
+                "transactions",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 0.9197207891481876,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I make database queries faster?",
+                "queryEmbeddingMs": 16.144999995827675,
+                "loadMs": 0,
+                "retrievalMs": 40.2922499999986,
+                "totalMs": 113.82500000298023,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How do I avoid overwatering houseplants?",
+              "ids": [
+                "plants-water",
+                "raincoat",
+                "sleep-routine",
+                "plants-light",
+                "budget"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How do I avoid overwatering houseplants?",
+                "queryEmbeddingMs": 17.179999999701977,
+                "loadMs": 0,
+                "retrievalMs": 31.236458999977913,
+                "totalMs": 72.37000000476837,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "What helps me fall asleep after drinking coffee?",
+              "ids": [
+                "sleep-caffeine",
+                "sleep-routine",
+                "bread-crust",
+                "stretching",
+                "tea"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "What helps me fall asleep after drinking coffee?",
+                "queryEmbeddingMs": 12.740000002086163,
+                "loadMs": 0,
+                "retrievalMs": 27.401542000006884,
+                "totalMs": 60.47000000625849,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How should I use Git branches for an experiment?",
+              "ids": [
+                "git-branch",
+                "git-commit",
+                "tea",
+                "bike-tire",
+                "db-index"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How should I use Git branches for an experiment?",
+                "queryEmbeddingMs": 14.95499999821186,
+                "loadMs": 0,
+                "retrievalMs": 33.39024999999674,
+                "totalMs": 66.85499999672174,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "How can I remember what I studied for longer?",
+              "ids": [
+                "memory-recall",
+                "memory-spacing",
+                "budget",
+                "backups",
+                "vectors"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "How can I remember what I studied for longer?",
+                "queryEmbeddingMs": 15.090000003576279,
+                "loadMs": 0,
+                "retrievalMs": 24.73612499999581,
+                "totalMs": 59.29500000178814,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            },
+            {
+              "query": "Why is my bread dough not rising quickly?",
+              "ids": [
+                "bread-proof",
+                "bread-crust",
+                "backups",
+                "bike-chain",
+                "bike-tire"
+              ],
+              "recallAt5": 1,
+              "ndcgAt5": 1,
+              "metrics": {
+                "stage": "search",
+                "collection": "pages_99632e1994bd4fed13f0a6db",
+                "query": "Why is my bread dough not rising quickly?",
+                "queryEmbeddingMs": 13.200000002980232,
+                "loadMs": 0,
+                "retrievalMs": 26.359625000040978,
+                "totalMs": 57.55499999970198,
+                "backend": "wasm",
+                "dtype": "q8"
+              }
+            }
+          ]
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "hardwareConcurrency": 10,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "shaderF16": true
+        }
+      },
+      "load": {
+        "backend": "wasm",
+        "dtype": "q8",
+        "fallbackReason": "已选择 WASM / INT8 验证模式。",
+        "adapter": null,
+        "model": "Xenova/all-MiniLM-L6-v2",
+        "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+        "dimension": 384,
+        "loadMs": 287.41499999910593,
+        "modelFetchMs": 31.88000000268221,
+        "cached": false
+      },
+      "collection": {
+        "name": "pages_99632e1994bd4fed13f0a6db",
+        "title": "实测 int8-wasm-b8",
+        "count": 24
+      },
+      "summary": {
+        "warmDocumentEmbeddingMs": 443.9150000065565,
+        "warmDocumentsPerSecond": 54.06440422073038,
+        "warmWriteMs": 238.34037500002887,
+        "warmRefreshMs": 628.2667909999727,
+        "warmQueryEmbeddingMs": 14.697500001639128,
+        "warmRetrievalMs": 27.105562500015367,
+        "warmEndToEndMs": 60.61750000342727,
+        "recallAt5": 1,
+        "ndcgAt5": 0.986620131524698
+      }
+    }
+  ],
+  "pageErrors": [],
+  "externalRequests": [],
+  "finished": "2026-10-27T20:52:39.256Z"
+}

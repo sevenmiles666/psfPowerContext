@@ -1,0 +1,37 @@
+{
+  "as_of": "2026-10-27T20:55:01.048377+00:00",
+  "source_sha256": {
+    ".env.example": "7ac566f76974beb91bfda87786e618a7b8feec31fb02a27aac3b34631f826c3f",
+    ".gitignore": "bf749b751971978a731665cccb1b589b06dd3119fd4d8c0c42232cff8a98abf7",
+    ".gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "994ef8b91d4ce4e068aee6a1cc32b7b672b4b25d4a2dc622f08b84617bf42617",
+    "TECHNICAL.md": "93ba3884cb70b58523c04c670713489851b9ba641df6f70e51ab4a80459525e5",
+    "app.js": "bc46b397f994ba19a6c51c318a8b5799bad8bd7a5db08db04043c614180eca10",
+    "benchmark-refresh.mjs": "6e3d8c3f2cbe6d3ae78f1c2d8750e376675df58f9fe8695f0ad0bfd36301426a",
+    "benchmark.mjs": "736fa393ab15a6da9c8316aef2d37c212e919b2426ee81f48c5665e659eb6b69",
+    "download_models.py": "dad2a3acd7642f4c63ceb0bdcdb4f06e69f91e3a8e09e3558ccde784034a3c14",
+    "embedding-worker.js": "3bf870a14aa849425881391a75b8da4ca1e453025b21afcc9363e15da0bcc6d0",
+    "index.html": "2f2e37ead9435c72df750dbc7ab81e7ab2c8ac01569200cbb413b54d6398f066",
+    "install-seekdb-ubuntu.sh": "00a88c57cf2f6f73efbf3434a5a68fc47fd1069ae584a3d265a8d438273084e2",
+    "package.json": "efc55f601afea0a28c5c95c5ab7c1d0d50ced723e00f833746f85c679538d577",
+    "pnpm-lock.yaml": "a7347b9546f80b04379f544e8e2afbae73cefef6c84f4a803dae98cc611127c1",
+    "prepare-runtime.mjs": "d3b14d70fa40576282eda1cd009c5cb900ffcba84d9d2cacbd6bb912bf6a29f4",
+    "sample-data.js": "982046466b4a48a1f2b8ae9fe5e6150be0ee899f0f09d5c34e41a06f6684875d",
+    "server.mjs": "1e0a95602f87db5db0cb31b00d10d75990c797d475a3c4608efb4b26aed03e08",
+    "start-seekdb.sh": "19294b1bb22df7a14c756f4290aa5a2af9971fbc13db1c302b9225db43bdffc0",
+    "style.css": "ddfd6543e034c329487f881fb72616d4011e0d9ec2c956fdce5cdbf8f891bc03",
+    "verify-browser.mjs": "93b1f99f5204244c1688c5335a885e9f7cde0f028df5d96f0a4bf91eaa663463",
+    "verify-state.mjs": "4c4247b2bba92874f92532f92d479ae3a435367fc74eafdab3c2164b4a038ed5",
+    "vite.config.js": "a589a89d9d1fb5334929747f0e6d422451faf968664690e1424f8faf9339d647"
+  },
+  "clean_reproduction": "Separate directory, frozen-lockfile offline installation, fresh build, independent database, real browser smoke",
+  "checks": [
+    "Chrome real Apple GPU end-to-end",
+    "Edge real WASM end-to-end; headless screenshot unsupported",
+    "nine UI/state/fallback checks",
+    "four configurations, four rounds each",
+    "same-vector refresh comparison, three rounds",
+    "Node syntax, Ruff, shell syntax, credential-pattern scan"
+  ],
+  "scores": "not yet submitted or confirmed"
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+public/models/
+public/runtime/
+.env
+__pycache__/
+.seekdb-package/
+.seekdb-data/
+.qa-tools/

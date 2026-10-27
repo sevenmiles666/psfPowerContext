@@ -1,0 +1,215 @@
+{
+  "started": "2026-10-27T20:53:03.182Z",
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8789/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/assets/index-D-Vj7438.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/assets/index-6ieWlizK.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/assets/embedding-worker-e0XxhTwF.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/api/collections",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/models/minilm/tokenizer.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/models/minilm/tokenizer_config.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/models/minilm/config.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/models/minilm/onnx/model_fp16.onnx",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/runtime/ort-wasm-simd-threaded.jsep.mjs",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/runtime/ort-wasm-simd-threaded.jsep.wasm",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/api/import",
+      "method": "POST"
+    },
+    {
+      "url": "http://127.0.0.1:8789/api/collections",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8789/api/search",
+      "method": "POST"
+    },
+    {
+      "url": "http://127.0.0.1:8789/api/search",
+      "method": "POST"
+    }
+  ],
+  "queries": [
+    {
+      "text": "How can I make database queries faster?",
+      "relevant": [
+        "db-index",
+        "db-plan"
+      ]
+    },
+    {
+      "text": "How do I avoid overwatering houseplants?",
+      "relevant": [
+        "plants-water"
+      ]
+    },
+    {
+      "text": "What helps me fall asleep after drinking coffee?",
+      "relevant": [
+        "sleep-routine",
+        "sleep-caffeine"
+      ]
+    },
+    {
+      "text": "How should I use Git branches for an experiment?",
+      "relevant": [
+        "git-branch",
+        "git-commit"
+      ]
+    },
+    {
+      "text": "How can I remember what I studied for longer?",
+      "relevant": [
+        "memory-recall",
+        "memory-spacing"
+      ]
+    },
+    {
+      "text": "Why is my bread dough not rising quickly?",
+      "relevant": [
+        "bread-proof"
+      ]
+    }
+  ],
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "gpu": true,
+    "adapter": true
+  },
+  "load": {
+    "backend": "webgpu",
+    "dtype": "fp16",
+    "fallbackReason": null,
+    "adapter": {
+      "vendor": "apple",
+      "architecture": "metal-3",
+      "description": ""
+    },
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "dimension": 384,
+    "loadMs": 434.0949999988079,
+    "modelFetchMs": 95.92000000178814,
+    "cached": false
+  },
+  "import": {
+    "imported": 24,
+    "count": 24,
+    "writeMs": 335.6282920000376,
+    "refreshMs": 361.6674590000184,
+    "refreshed": true,
+    "collection": "pages_c3f46556ef6b7d3b6d5a2eab",
+    "stage": "import",
+    "documents": 24,
+    "loadMs": 0,
+    "embeddingMs": 100.6550000011921,
+    "totalMs": 848.2899999991059,
+    "backend": "webgpu",
+    "dtype": "fp16",
+    "batchSize": 8
+  },
+  "search": {
+    "collection": "pages_c3f46556ef6b7d3b6d5a2eab",
+    "retrievalMs": 120.9572090000147,
+    "operation": "seekdb Collection.hybridSearch / DBMS_HYBRID_SEARCH + RRF",
+    "results": [
+      {
+        "id": "db-plan",
+        "text": "EXPLAIN shows whether a database query scans a whole table or uses an index. Slow queries often improve after an appropriate index, fewer scanned rows, and up-to-date statistics. Measure latency before and after each change.",
+        "metadata": {
+          "part": 1,
+          "title": "Read a query plan before guessing",
+          "source": "本队原创示例摘录"
+        },
+        "distance": 0.0325
+      },
+      {
+        "id": "hybrid",
+        "text": "Hybrid search combines keyword full-text search and semantic vector search. Reciprocal rank fusion combines ranked candidates inside the database. Exact product names and broader conceptual queries can both benefit.",
+        "metadata": {
+          "part": 1,
+          "title": "Combine meaning with exact words",
+          "source": "本队原创示例摘录"
+        },
+        "distance": 0.0323
+      },
+      {
+        "id": "db-index",
+        "text": "A database index is like a book index. It lets a query locate matching rows without scanning every record. Index columns used in WHERE filters and JOIN conditions, then use EXPLAIN to inspect the query plan.",
+        "metadata": {
+          "part": 1,
+          "title": "A shortcut through the database",
+          "source": "本队原创示例摘录"
+        },
+        "distance": 0.0308
+      },
+      {
+        "id": "transactions",
+        "text": "A database transaction groups related changes into an atomic unit. Commit when all steps succeed and roll back on failure. Short transactions reduce the time that locks block other work.",
+        "metadata": {
+          "part": 1,
+          "title": "Finish a transaction as one unit",
+          "source": "本队原创示例摘录"
+        },
+        "distance": 0.0308
+      },
+      {
+        "id": "vectors",
+        "text": "Embedding models represent text as numerical vectors. Nearby vectors often describe related meanings even when exact words differ. A vector database stores embeddings and retrieves nearby documents.",
+        "metadata": {
+          "part": 1,
+          "title": "Search by meaning with vectors",
+          "source": "本队原创示例摘录"
+        },
+        "distance": 0.0303
+      }
+    ],
+    "metrics": {
+      "stage": "search",
+      "collection": "pages_c3f46556ef6b7d3b6d5a2eab",
+      "query": "How can I make database queries faster?",
+      "queryEmbeddingMs": 14.755000002682209,
+      "loadMs": 0,
+      "retrievalMs": 120.9572090000147,
+      "totalMs": 162.85499999672174,
+      "backend": "webgpu",
+      "dtype": "fp16"
+    }
+  },
+  "passed": true,
+  "finished": "2026-10-27T20:53:05.478Z"
+}

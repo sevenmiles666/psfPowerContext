@@ -1,0 +1,110 @@
+[
+  {
+    "name": "fp32-webgpu-b1",
+    "load": {
+      "backend": "webgpu",
+      "dtype": "fp32",
+      "fallbackReason": null,
+      "adapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "description": ""
+      },
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dimension": 384,
+      "loadMs": 490.21000000089407,
+      "modelFetchMs": 64.19500000029802,
+      "cached": false
+    },
+    "warmDocumentEmbeddingMs": 175.57500000298023,
+    "warmDocumentsPerSecond": 136.6937206298882,
+    "warmWriteMs": 314.3364999999758,
+    "warmRefreshMs": 613.678459000017,
+    "warmQueryEmbeddingMs": 9.452500000596046,
+    "warmRetrievalMs": 32.64191649999702,
+    "warmEndToEndMs": 62.935000002384186,
+    "recallAt5": 1,
+    "ndcgAt5": 0.986620131524698
+  },
+  {
+    "name": "fp16-webgpu-b1",
+    "load": {
+      "backend": "webgpu",
+      "dtype": "fp16",
+      "fallbackReason": null,
+      "adapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "description": ""
+      },
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dimension": 384,
+      "loadMs": 342.5249999985099,
+      "modelFetchMs": 41.82999999821186,
+      "cached": false
+    },
+    "warmDocumentEmbeddingMs": 166.95500000566244,
+    "warmDocumentsPerSecond": 143.75131022842092,
+    "warmWriteMs": 250.93041600001743,
+    "warmRefreshMs": 538.4375829999917,
+    "warmQueryEmbeddingMs": 9.987499997019768,
+    "warmRetrievalMs": 27.346707999997307,
+    "warmEndToEndMs": 57.82750000059605,
+    "recallAt5": 1,
+    "ndcgAt5": 0.986620131524698
+  },
+  {
+    "name": "fp16-webgpu-b8",
+    "load": {
+      "backend": "webgpu",
+      "dtype": "fp16",
+      "fallbackReason": null,
+      "adapter": {
+        "vendor": "apple",
+        "architecture": "metal-3",
+        "description": ""
+      },
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dimension": 384,
+      "loadMs": 336.14500000327826,
+      "modelFetchMs": 47.86500000208616,
+      "cached": false
+    },
+    "warmDocumentEmbeddingMs": 75.70499999821186,
+    "warmDocumentsPerSecond": 317.0200118957384,
+    "warmWriteMs": 314.382500000007,
+    "warmRefreshMs": 633.102499999979,
+    "warmQueryEmbeddingMs": 11.280000004917383,
+    "warmRetrievalMs": 27.324812999984715,
+    "warmEndToEndMs": 60.37000000104308,
+    "recallAt5": 1,
+    "ndcgAt5": 0.986620131524698
+  },
+  {
+    "name": "int8-wasm-b8",
+    "load": {
+      "backend": "wasm",
+      "dtype": "q8",
+      "fallbackReason": "已选择 WASM / INT8 验证模式。",
+      "adapter": null,
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dimension": 384,
+      "loadMs": 287.41499999910593,
+      "modelFetchMs": 31.88000000268221,
+      "cached": false
+    },
+    "warmDocumentEmbeddingMs": 443.9150000065565,
+    "warmDocumentsPerSecond": 54.06440422073038,
+    "warmWriteMs": 238.34037500002887,
+    "warmRefreshMs": 628.2667909999727,
+    "warmQueryEmbeddingMs": 14.697500001639128,
+    "warmRetrievalMs": 27.105562500015367,
+    "warmEndToEndMs": 60.61750000342727,
+    "recallAt5": 1,
+    "ndcgAt5": 0.986620131524698
+  }
+]
