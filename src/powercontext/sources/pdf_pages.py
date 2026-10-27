@@ -8,6 +8,7 @@ import json
 import math
 import re
 from collections import Counter
+from itertools import pairwise
 from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -213,14 +214,58 @@ _STOP_WORDS = frozenset([
     "explicitly",
     "important",
     "primarily",
+    "about",
+    "able",
+    "assume",
+    "between",
+    "billions",
+    "changed",
+    "compare",
+    "declined",
+    "done",
+    "during",
+    "end",
+    "equities",
+    "explain",
+    "following",
+    "improved",
+    "improving",
+    "information",
+    "like",
+    "major",
+    "metric",
+    "millions",
+    "much",
+    "please",
+    "profile",
+    "public",
+    "s",
+    "something",
+    "than",
+    "usd",
+    "useful",
+    "using",
+    "why",
 ])
 _FINANCIAL_EXPANSIONS = {
-    "ebitda": "operating income depreciation amortization",
+    "ebitda": "consolidated statements income operating profit depreciation amortization",
     "capex": "capital expenditures investing activities cash flows",
+    "ppne": "property plant equipment accumulated depreciation",
+    "ppe": "property plant equipment accumulated depreciation",
+    "quick": "cash equivalents securities receivables current assets current liabilities",
+    "cogs": "cost goods products sales sold",
+    "margin": "consolidated statements income operations revenue revenues expenses cost products goods sold",
+    "tax": "consolidated statements income operations income before taxes provision expense effective rate",
+    "liability": "consolidated balance sheets assets liabilities",
+    "concentration": "customer customers accounted sales revenues percent",
+    "retain": "retention attrition renewals members",
+    "products": "product products business overview offerings",
+    "customers": "customer customers major principal sales revenues contracts",
+    "categories": "business segment revenues sales",
     "geographies": "geographic countries markets international divisions operations",
     "legal": "litigation proceedings contingencies lawsuits",
     "restructuring": "restructuring charges expenses costs",
-    "income": "income earnings operations",
+    "income": "income earnings profit operations",
 }
 
 
@@ -228,7 +273,24 @@ def _question_terms(question: str) -> tuple[str, ...]:
     return tuple(dict.fromkeys(term for term in _WORDS.findall(question.lower()) if term not in _STOP_WORDS))
 
 
+def _singular(term: str) -> str:
+    if len(term) > 4 and term.endswith("ies"):
+        return term[:-3] + "y"
+    if len(term) > 4 and term.endswith("sses"):
+        return term[:-2]
+    if len(term) > 3 and term.endswith("s") and not term.endswith(("ss", "us", "is")):
+        return term[:-1]
+    return term
+
+
 _PageKey = tuple[str, str, str]
+
+
+def _document_entity(text: str) -> str:
+    # The standard projection starts with the caller's document ID. A company
+    # token there can select a document without dominating every page within it.
+    document_id = text.partition("\n")[0]
+    return re.sub(r"[^a-z0-9]", "", document_id.split("_", 1)[0].lower())
 
 
 async def _collect_candidates(
@@ -253,13 +315,41 @@ def _rank_candidates(
 ) -> list[MemoryHit]:
     if not candidates:
         return []
-    counts = {key: Counter(_WORDS.findall(hit.text.lower())) for key, hit in candidates.items()}
-    weighted_terms = dict.fromkeys(terms, 1.0)
+    tokens = {
+        key: tuple(_singular(term) for term in _WORDS.findall(hit.text.lower())) for key, hit in candidates.items()
+    }
+    counts = {key: Counter(value) for key, value in tokens.items()}
+    entities = {key: _document_entity(hit.text) for key, hit in candidates.items()}
+    entity_names = set(entities.values())
+    query_entities = {
+        "".join(terms[start : start + size])
+        for start in range(len(terms))
+        for size in range(1, 4)
+        if "".join(terms[start : start + size]) in entity_names
+    }
+    entity_terms = {
+        term
+        for start in range(len(terms))
+        for size in range(1, 4)
+        if "".join(terms[start : start + size]) in query_entities
+        for term in terms[start : start + size]
+    }
+    weighted_terms = dict.fromkeys((_singular(term) for term in terms if term not in entity_terms), 1.0)
     for expansion in expansions:
         for term in expansion.split():
+            term = _singular(term)
             weighted_terms[term] = max(weighted_terms.get(term, 0.0), 0.6)
     frequencies = Counter(term for count in counts.values() for term in weighted_terms if term in count)
     average = sum(sum(count.values()) for count in counts.values()) / len(counts)
+    phrases = {
+        (_singular(left), _singular(right))
+        for group in (
+            tuple(term for term in terms if term not in entity_terms),
+            *(expansion.split() for expansion in expansions),
+        )
+        for left, right in pairwise(group)
+        if left.isalpha() and right.isalpha()
+    }
 
     def score(key: _PageKey) -> float:
         count = counts[key]
@@ -273,7 +363,12 @@ def _rank_candidates(
             for term, weight in weighted_terms.items()
             if count[term]
         )
-        return lexical + 8 * ranks[key]
+        present = set(pairwise(tokens[key]))
+        proximity = sum(
+            sum(math.log1p(len(counts) / (1 + frequencies[term])) for term in phrase) for phrase in phrases & present
+        )
+        document_match = 4 * math.log1p(len(counts)) if entities[key] in query_entities else 0
+        return lexical + 2 * proximity + 8 * ranks[key] + document_match
 
     return [candidates[key] for key in sorted(candidates, key=lambda key: (-score(key), key))]
 
@@ -294,6 +389,7 @@ async def search_pdf_pages(
     queries = [analyze_fts_query(question), " ".join(terms), *expansions]
     # Small groups admit concise tables containing only some requested facts.
     queries.extend(" ".join(terms[start : start + 4]) for start in range(0, len(terms), 4))
+    queries.extend(" ".join(_singular(term) for term in terms[start : start + 4]) for start in range(0, len(terms), 4))
     candidates, ranks = await _collect_candidates(memory, queries)
 
     citations = []
