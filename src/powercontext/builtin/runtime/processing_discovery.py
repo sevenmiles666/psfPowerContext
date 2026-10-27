@@ -16,14 +16,14 @@
 
 from __future__ import annotations
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncConnection
 
 from powercontext.builtin.persistence.cursors import SourceCursorRepository
 from powercontext.builtin.persistence.database import AsyncDatabase
 from powercontext.builtin.persistence.processing_intents import ArtifactProcessingIntentRepository
 from powercontext.builtin.persistence.supervision import ArtifactProcessingFence, ArtifactProcessingLeaseRepository
-from powercontext.builtin.persistence.tables import PROFILE_POLICIES_TABLE, SOURCE_JOURNAL_HEADS_TABLE
+from powercontext.builtin.persistence.tables import PROFILE_POLICIES_TABLE, SOURCE_JOURNAL_HEADS_TABLE, SOURCES_TABLE
 
 
 async def enabled_profile_scopes(connection: AsyncConnection, scope_ids: tuple[str, ...]) -> frozenset[str]:
@@ -52,6 +52,33 @@ class SourceProcessingPendingProvider:
         self._database = database
         self._binding = binding_name
         self._family = artifact_family
+
+    async def eligible_by_count(
+        self, connection: AsyncConnection, scope_ids: tuple[str, ...], *, threshold: int
+    ) -> frozenset[str]:
+        """Count actual journal identities after this Family's successful cursor.
+
+        Read at most the threshold of indexed positions per candidate, including
+        lineage-only records. Sequence gaps and replayed identities cannot inflate
+        admission, and Source bodies never enter the scheduler.
+        """
+        cursors = await SourceCursorRepository().load_many(connection, scope_ids, self._binding)
+        eligible: set[str] = set()
+        for scope in scope_ids:
+            cursor = cursors.get(scope)
+            positions = (
+                select(SOURCES_TABLE.c.journal_position)
+                .where(
+                    SOURCES_TABLE.c.scope_id == scope,
+                    SOURCES_TABLE.c.journal_position > (0 if cursor is None else cursor.cursor.sequence),
+                )
+                .limit(threshold)
+                .subquery()
+            )
+            count = await connection.scalar(select(func.count()).select_from(positions))
+            if count is not None and count >= threshold:
+                eligible.add(scope)
+        return frozenset(eligible)
 
     async def reconcile(self, after_scope_id: str | None, limit: int, *, fence: ArtifactProcessingFence) -> str | None:
         heads = SOURCE_JOURNAL_HEADS_TABLE
