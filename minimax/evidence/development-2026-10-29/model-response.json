@@ -1,0 +1,16 @@
+{
+  "model": "MiniMax-M3.1-Flash",
+  "usage": {
+    "total_tokens": 2458,
+    "total_characters": 0,
+    "prompt_tokens": 1561,
+    "completion_tokens": 897,
+    "completion_tokens_details": {
+      "reasoning_tokens": 715
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "content": "{\"path\":\"taskboard.py\",\"content\":\"\\\"\\\"\\\"A minimal task board with normalized status filtering.\\\"\\\"\\\"\\n\\n\\ndef _normalize_status(status):\\n    \\\"\\\"\\\"Normalize a status for whitespace-insensitive, case-folded comparison.\\\"\\\"\\\"\\n    return status.strip().casefold()\\n\\n\\ndef select_tasks(records, status=None):\\n    \\\"\\\"\\\"Return matching task copies in original order without modifying the records.\\\"\\\"\\\"\\n    if status is None:\\n        return [record.copy() for record in records]\\n\\n    normalized_status = _normalize_status(status)\\n    if not normalized_status:\\n        return []\\n\\n    return [\\n        record.copy()\\n        for record in records\\n        if _normalize_status(record[\\\"status\\\"]) == normalized_status\\n    ]\\n\"}"
+}

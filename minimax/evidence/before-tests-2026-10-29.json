@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext/.venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_target",
+    "test_taskboard"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace) ... FAIL\ntest_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace) ... FAIL\ntest_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold) ... FAIL\ntest_empty_and_unknown (test_taskboard.CompatibilityTests.test_empty_and_unknown) ... ok\ntest_exact_filter_and_order (test_taskboard.CompatibilityTests.test_exact_filter_and_order) ... ok\ntest_none_returns_all (test_taskboard.CompatibilityTests.test_none_returns_all) ... ok\ntest_returns_copies (test_taskboard.CompatibilityTests.test_returns_copies) ... ok\n\n======================================================================\nFAIL: test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 9, in test_query_case_and_whitespace\n    self.assertEqual(select_tasks(records, \" DONE \"), [{\"id\": 2, \"status\": \"done\"}])\nAssertionError: Lists differ: [] != [{'id': 2, 'status': 'done'}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 2, 'status': 'done'}\n\n- []\n+ [{'id': 2, 'status': 'done'}]\n\n======================================================================\nFAIL: test_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 13, in test_stored_case_and_whitespace\n    self.assertEqual(select_tasks(records, \"done\"), [{\"id\": 1, \"status\": \" DONE \"}])\nAssertionError: Lists differ: [] != [{'id': 1, 'status': ' DONE '}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 1, 'status': ' DONE '}\n\n- []\n+ [{'id': 1, 'status': ' DONE '}]\n\n======================================================================\nFAIL: test_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 17, in test_unicode_casefold\n    self.assertEqual(\nAssertionError: Lists differ: [] != [{'id': 1, 'status': 'Straße'}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 1, 'status': 'Straße'}\n\n- []\n+ [{'id': 1, 'status': 'Straße'}]\n\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nFAILED (failures=3)\n",
+  "test_hashes": {
+    "test_target.py": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68",
+    "test_taskboard.py": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2"
+  },
+  "code_sha256": "454ef592cfccc92e26adf3ecae6ca5e17b0a48cce0de221a19970d00c7f5896b"
+}

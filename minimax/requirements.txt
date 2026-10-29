@@ -1,0 +1,3 @@
+PyMySQL==1.2.0
+httpx==0.28.1
+powercontext[builtin,client] @ git+https://github.com/sevenmiles666/psfPowerContext.git@d0fd77f63a096c70602dea4c210d99b9dc67b146

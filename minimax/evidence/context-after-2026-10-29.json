@@ -1,0 +1,101 @@
+{
+  "project": "taskboard-demo",
+  "task": "status-normalization",
+  "goal": "Implement STATUS-001 in select_tasks; preserve STATUS-002 and STATUS-003.",
+  "database_query": {
+    "sql": "SELECT path,kind,revision,content FROM context_documents WHERE project_id=%s AND LOCATE(%s,content)>0 ORDER BY kind,path",
+    "parameters": [
+      "taskboard-demo",
+      "select_tasks"
+    ]
+  },
+  "sources": [
+    {
+      "path": "taskboard.py",
+      "kind": "code",
+      "revision": "9f9e1ffa82697926a695addcfee8c0f242e1d6b26bae2e072c868152a4248363",
+      "content": "\"\"\"A minimal task board with normalized status filtering.\"\"\"\n\n\ndef _normalize_status(status):\n    \"\"\"Normalize a status for whitespace-insensitive, case-folded comparison.\"\"\"\n    return status.strip().casefold()\n\n\ndef select_tasks(records, status=None):\n    \"\"\"Return matching task copies in original order without modifying the records.\"\"\"\n    if status is None:\n        return [record.copy() for record in records]\n\n    normalized_status = _normalize_status(status)\n    if not normalized_status:\n        return []\n\n    return [\n        record.copy()\n        for record in records\n        if _normalize_status(record[\"status\"]) == normalized_status\n    ]\n",
+      "citation": "taskboard.py:1",
+      "lines": 22
+    },
+    {
+      "path": "spec.md",
+      "kind": "spec",
+      "revision": "e22af150ac2e19457810af4f05d4e92d81c87eb12701f1c5f1310befebb13fac",
+      "content": "# Task board specification · revision 2\n\nSTATUS-001: `select_tasks(records, status=None)` must compare a supplied status\nafter stripping surrounding whitespace and applying Unicode case folding.\nThe status stored on each record must be normalized for comparison in the same way.\nThe returned records retain their original values and input order.\n\nSTATUS-002: `status=None` returns all records. An empty or unknown status matches\nno records. Existing exact status filtering continues to work.\n\nSTATUS-003: `select_tasks` returns copies of matching dictionaries and never\nmutates the caller's list or records.\n\nRelevant implementation: `taskboard.py::select_tasks`.\nCompatibility tests: `test_taskboard.py`. Target behavior: `test_target.py`.\n\nRevision history: revision 1 compared status strings literally; revision 2 adds\nwhitespace handling and Unicode case folding. The baseline intentionally still\nimplements revision 1 so the same target tests demonstrate a real behavior failure.\n",
+      "citation": "spec.md:1",
+      "lines": 19
+    },
+    {
+      "path": "test_target.py",
+      "kind": "test",
+      "revision": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68",
+      "content": "import unittest\n\nfrom taskboard import select_tasks\n\n\nclass NewBehaviorTests(unittest.TestCase):\n    def test_query_case_and_whitespace(self):\n        records = [{\"id\": 1, \"status\": \"pending\"}, {\"id\": 2, \"status\": \"done\"}]\n        self.assertEqual(select_tasks(records, \" DONE \"), [{\"id\": 2, \"status\": \"done\"}])\n\n    def test_stored_case_and_whitespace(self):\n        records = [{\"id\": 1, \"status\": \" DONE \"}, {\"id\": 2, \"status\": \"pending\"}]\n        self.assertEqual(select_tasks(records, \"done\"), [{\"id\": 1, \"status\": \" DONE \"}])\n\n    def test_unicode_casefold(self):\n        records = [{\"id\": 1, \"status\": \"Straße\"}, {\"id\": 2, \"status\": \"other\"}]\n        self.assertEqual(\n            select_tasks(records, \" STRASSE \"), [{\"id\": 1, \"status\": \"Straße\"}]\n        )\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n",
+      "citation": "test_target.py:1",
+      "lines": 23
+    },
+    {
+      "path": "test_taskboard.py",
+      "kind": "test",
+      "revision": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2",
+      "content": "import unittest\n\nfrom taskboard import select_tasks\n\n\nclass CompatibilityTests(unittest.TestCase):\n    def setUp(self):\n        self.records = [\n            {\"id\": 1, \"status\": \"pending\"},\n            {\"id\": 2, \"status\": \"done\"},\n            {\"id\": 3, \"status\": \"done\"},\n        ]\n\n    def test_none_returns_all(self):\n        self.assertEqual(select_tasks(self.records), self.records)\n\n    def test_exact_filter_and_order(self):\n        self.assertEqual([x[\"id\"] for x in select_tasks(self.records, \"done\")], [2, 3])\n\n    def test_empty_and_unknown(self):\n        self.assertEqual(select_tasks(self.records, \"\"), [])\n        self.assertEqual(select_tasks(self.records, \"missing\"), [])\n\n    def test_returns_copies(self):\n        result = select_tasks(self.records, \"done\")\n        result[0][\"status\"] = \"changed\"\n        self.assertEqual(self.records[1][\"status\"], \"done\")\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n",
+      "citation": "test_taskboard.py:1",
+      "lines": 31
+    }
+  ],
+  "state": {
+    "scope_id": "scp_3sqyq65301dz6zw6jdg6cvaeyw",
+    "previous": {
+      "completed": [
+        "MiniMax code modification",
+        "target and regression tests"
+      ],
+      "pending": [],
+      "verification": {
+        "before": {
+          "command": [
+            "/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext/.venv/bin/python",
+            "-B",
+            "-m",
+            "unittest",
+            "-v",
+            "test_target",
+            "test_taskboard"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace) ... FAIL\ntest_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace) ... FAIL\ntest_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold) ... FAIL\ntest_empty_and_unknown (test_taskboard.CompatibilityTests.test_empty_and_unknown) ... ok\ntest_exact_filter_and_order (test_taskboard.CompatibilityTests.test_exact_filter_and_order) ... ok\ntest_none_returns_all (test_taskboard.CompatibilityTests.test_none_returns_all) ... ok\ntest_returns_copies (test_taskboard.CompatibilityTests.test_returns_copies) ... ok\n\n======================================================================\nFAIL: test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 9, in test_query_case_and_whitespace\n    self.assertEqual(select_tasks(records, \" DONE \"), [{\"id\": 2, \"status\": \"done\"}])\nAssertionError: Lists differ: [] != [{'id': 2, 'status': 'done'}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 2, 'status': 'done'}\n\n- []\n+ [{'id': 2, 'status': 'done'}]\n\n======================================================================\nFAIL: test_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 13, in test_stored_case_and_whitespace\n    self.assertEqual(select_tasks(records, \"done\"), [{\"id\": 1, \"status\": \" DONE \"}])\nAssertionError: Lists differ: [] != [{'id': 1, 'status': ' DONE '}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 1, 'status': ' DONE '}\n\n- []\n+ [{'id': 1, 'status': ' DONE '}]\n\n======================================================================\nFAIL: test_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext-ecosystem/minimax/example/test_target.py\", line 17, in test_unicode_casefold\n    self.assertEqual(\nAssertionError: Lists differ: [] != [{'id': 1, 'status': 'Straße'}]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n{'id': 1, 'status': 'Straße'}\n\n- []\n+ [{'id': 1, 'status': 'Straße'}]\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=3)\n",
+          "test_hashes": {
+            "test_target.py": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68",
+            "test_taskboard.py": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2"
+          },
+          "code_sha256": "454ef592cfccc92e26adf3ecae6ca5e17b0a48cce0de221a19970d00c7f5896b"
+        },
+        "after": {
+          "command": [
+            "/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext/.venv/bin/python",
+            "-B",
+            "-m",
+            "unittest",
+            "-v",
+            "test_target",
+            "test_taskboard"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace) ... ok\ntest_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace) ... ok\ntest_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold) ... ok\ntest_empty_and_unknown (test_taskboard.CompatibilityTests.test_empty_and_unknown) ... ok\ntest_exact_filter_and_order (test_taskboard.CompatibilityTests.test_exact_filter_and_order) ... ok\ntest_none_returns_all (test_taskboard.CompatibilityTests.test_none_returns_all) ... ok\ntest_returns_copies (test_taskboard.CompatibilityTests.test_returns_copies) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nOK\n",
+          "test_hashes": {
+            "test_target.py": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68",
+            "test_taskboard.py": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2"
+          },
+          "code_sha256": "9f9e1ffa82697926a695addcfee8c0f242e1d6b26bae2e072c868152a4248363"
+        },
+        "model_used": "MiniMax-M3.1-Flash",
+        "passed": true
+      }
+    },
+    "previous_revision": 1,
+    "written": null,
+    "citation": null
+  }
+}

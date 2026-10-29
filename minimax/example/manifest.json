@@ -1,0 +1,13 @@
+{
+  "project": "taskboard-demo",
+  "task": "status-normalization",
+  "query": "select_tasks",
+  "goal": "Implement STATUS-001 in select_tasks; preserve STATUS-002 and STATUS-003.",
+  "target": "taskboard.py",
+  "files": [
+    {"path": "spec.md", "kind": "spec"},
+    {"path": "taskboard.py", "kind": "code"},
+    {"path": "test_target.py", "kind": "test"},
+    {"path": "test_taskboard.py", "kind": "test"}
+  ]
+}
