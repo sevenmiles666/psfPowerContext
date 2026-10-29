@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/ezio/Documents/ChatGPT/OceanBase 数据库/repos/powercontext/.venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_target",
+    "test_taskboard"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_query_case_and_whitespace (test_target.NewBehaviorTests.test_query_case_and_whitespace) ... ok\ntest_stored_case_and_whitespace (test_target.NewBehaviorTests.test_stored_case_and_whitespace) ... ok\ntest_unicode_casefold (test_target.NewBehaviorTests.test_unicode_casefold) ... ok\ntest_empty_and_unknown (test_taskboard.CompatibilityTests.test_empty_and_unknown) ... ok\ntest_exact_filter_and_order (test_taskboard.CompatibilityTests.test_exact_filter_and_order) ... ok\ntest_none_returns_all (test_taskboard.CompatibilityTests.test_none_returns_all) ... ok\ntest_returns_copies (test_taskboard.CompatibilityTests.test_returns_copies) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nOK\n",
+  "test_hashes": {
+    "test_target.py": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68",
+    "test_taskboard.py": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2"
+  },
+  "code_sha256": "9f9e1ffa82697926a695addcfee8c0f242e1d6b26bae2e072c868152a4248363"
+}

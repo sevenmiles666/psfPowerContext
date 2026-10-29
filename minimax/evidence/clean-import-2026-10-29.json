@@ -1,0 +1,24 @@
+{
+  "imported": [
+    {
+      "path": "spec.md",
+      "kind": "spec",
+      "sha256": "e22af150ac2e19457810af4f05d4e92d81c87eb12701f1c5f1310befebb13fac"
+    },
+    {
+      "path": "taskboard.py",
+      "kind": "code",
+      "sha256": "9f9e1ffa82697926a695addcfee8c0f242e1d6b26bae2e072c868152a4248363"
+    },
+    {
+      "path": "test_target.py",
+      "kind": "test",
+      "sha256": "67e4e3e2ea3027613db94b9bbe86d4772adc6b6b6d8cbec2304b6c4d124b8f68"
+    },
+    {
+      "path": "test_taskboard.py",
+      "kind": "test",
+      "sha256": "1fc315ce2ce018b68ea2edd8134f312fd6ac83947e8f4121d427c2cd20de0bd2"
+    }
+  ]
+}
