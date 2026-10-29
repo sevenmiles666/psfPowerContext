@@ -1,6 +1,6 @@
 # 规有所依 · SDD 上下文模块
 
-当前为已验证的 MiniMax 参与版本，**尚未平台提测**。seekdb 导入/查询、
+本项目提供可独立复现的 MiniMax 开发样例。seekdb 导入/查询、
 规格更新、PowerContext 跨进程状态复用均已实测。2026-10-29 使用已生效的
 MiniMax M Plan Explore 权益，通过 MiniMax-M3.1-Flash 实际修改样例代码；
 同一套测试由修改前 3 项目标失败、4 项兼容通过，变为修改后 7/7 通过。
@@ -23,8 +23,9 @@ python context_module.py context
 python context_module.py test
 ```
 
-初始测试应出现 3 个目标功能断言失败、4 个兼容性测试通过。失败来自
-基线函数尚未支持大小写/空白归一化，已有日志位于 `evidence/before-tests.json`。
+交付的 `example/taskboard.py` 是 MiniMax 修改后的实现，上述测试应为 **7/7 通过**。
+`baseline/taskboard.py` 是修改前实现，对同一套测试应有 3 个目标功能断言失败、
+4 个兼容性测试通过；已有日志位于 `evidence/before-tests-2026-10-29.json`。
 所有文件均随仓库交付，不依赖开发机器的源文件。
 
 ## 入口与数据流
@@ -66,10 +67,27 @@ python context_module.py test
 `develop` 将真实数据库上下文和已恢复状态提供给 MiniMax，只接受目标文件的
 完整源码，保留调用内容、模型返回、修改前后快照、diff、同一套测试的前后日志
 及测试文件哈希。模型输出不作为 shell 命令执行。之后需确认 7 个测试全部通过，
-重新启动后能读取并使用验证结果，再整理材料提测。
+重新启动后能读取并使用验证结果。已有真实模型调用的记录随仓库交付，
+复核已有修改及前后测试不需要再次调用模型。
 
-重新演示前：`cp baseline/taskboard.py example/taskboard.py`，使用新的 `--data`
-目录，从空状态开始验证。不要修改目标测试或兼容性测试。
+重新演示时，在临时副本中重置基线，使用新的状态和证据目录；这不会改动交付样例：
+
+```sh
+demo_dir=$(mktemp -d)
+cp -R example "$demo_dir/project"
+cp baseline/taskboard.py "$demo_dir/project/taskboard.py"
+python context_module.py test --root "$demo_dir/project"  # 预期退出码 1，3 项功能失败
+python context_module.py import --root "$demo_dir/project"
+python context_module.py develop --root "$demo_dir/project" \
+  --data "$demo_dir/state" --evidence "$demo_dir/evidence"
+python context_module.py context --root "$demo_dir/project" --data "$demo_dir/state"
+python context_module.py test --root "$demo_dir/project"  # 预期退出码 0，7/7 通过
+```
+
+`develop` 需要有效的 MiniMax 账号配置。只复核已交付修改时，可将
+`evidence/development-2026-10-29/after.py` 复制到临时工程的 `taskboard.py` 后
+执行同一条测试命令；这验证既有修改，不代表产生了新的模型调用。
+不要修改目标测试或兼容性测试。
 
 ## 已验证与缺口
 
