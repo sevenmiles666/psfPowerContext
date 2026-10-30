@@ -7,8 +7,8 @@
 | 项目网站网址 | 已发布并公开访问：https://zhiye-papertrail-dtwmawby435.qoder.website/ |
 | 网站可见范围 | 「任何人都可访问」，已用无登录状态的全新浏览器上下文验证首页与静态资源 200、无控制台错误 |
 | 网站内容 | 静态展示页：真实界面截图、验收结果与原始 JSON 下载、三份样例下载、一次完整检索的输入/步骤/结果、运行说明、功能边界与来源说明 |
-| 代码仓库 | https://github.com/sevenmiles666/psfseekdb ，分支 `2026-competition-ecosystem`，正式实现目录 `qoder/papertrail/`；**尚未推送本次改动**（本地仓库 `E:\qcoder\psfPowerContext` 的 origin 仍指向旧的 psfPowerContext，推送时需改为该地址或新增 remote） |
-| 提交 commit | 待本人配置 Git 作者身份后真实提交并填写 |
+| 代码仓库 | https://github.com/sevenmiles666/psfseekdb/tree/2026-competition-ecosystem （公开仓库），正式实现目录 `qoder/papertrail/`；2026-10-30 已推送，未改动本地 origin |
+| 提交 commit | `0eb5835` · Add Qoder PaperTrail formal app with real seekdb hybrid retrieval |
 | 运行说明 | `papertrail/README.md`：环境、依赖版本、seekdb 两种接入方式、安装到启动、首次使用与验收命令 |
 | 验证样例 | 初始数据 `papertrail/samples/`；输入「如何避免模型编造事实？」混合模式；步骤与实测结果见展示站点「复现」一节与 `docs/VALIDATION.md` |
 | 技术作用记录 | `evidence/verification.json`（34/34）、`evidence/persistence.json`（9/9）、`evidence/browser.json`（19/19），含 seekdb 版本、Collection、模型签名、RRF 参数与耗时 |
