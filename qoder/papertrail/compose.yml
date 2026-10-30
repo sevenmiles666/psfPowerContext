@@ -1,0 +1,12 @@
+services:
+  seekdb:
+    image: oceanbase/seekdb@sha256:4db4961869d554313520d6081fca29265ba6da6db7313311bd8acbed771a956b
+    container_name: qoder-papertrail-formal-seekdb
+    ports:
+      - "127.0.0.1:2884:2881"
+    volumes:
+      - qoder-papertrail-formal-data:/data
+    restart: unless-stopped
+
+volumes:
+  qoder-papertrail-formal-data:

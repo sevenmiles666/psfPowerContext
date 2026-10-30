@@ -1,0 +1,136 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-10-29T13:56:01.837Z",
+  "checks": [
+    {
+      "name": "桌面检索与原文片段精确高亮",
+      "status": "passed",
+      "detail": {
+        "id": "57dc5250279b55502f8ed03f10821c46:4"
+      }
+    },
+    {
+      "name": "复制引用包含逐字原文、文件名和稳定 ID",
+      "status": "passed",
+      "detail": {
+        "length": 186
+      }
+    },
+    {
+      "name": "检索结果真实导出 Markdown",
+      "status": "passed",
+      "detail": {
+        "bytes": 331
+      }
+    },
+    {
+      "name": "收藏与取消收藏均调用真实 API",
+      "status": "passed",
+      "detail": "57dc5250279b55502f8ed03f10821c46:4"
+    },
+    {
+      "name": "浏览器切换资料库不显示他库或已删除文献",
+      "status": "passed",
+      "detail": {
+        "libraryId": "59113d3f0e6c4b0b9ddb124f3ca37cd5"
+      }
+    },
+    {
+      "name": "浏览器上传 Markdown 并显示单文件结果",
+      "status": "passed",
+      "detail": {
+        "beforeUploadRows": 5
+      }
+    },
+    {
+      "name": "上传后文献列表真实刷新",
+      "status": "passed",
+      "detail": {
+        "after": 6
+      }
+    },
+    {
+      "name": "浏览器重复上传显示去重结果",
+      "status": "passed",
+      "detail": {
+        "filename": "浏览器上传.md"
+      }
+    },
+    {
+      "name": "浏览器创建空资料库并显示诚实空状态",
+      "status": "passed",
+      "detail": "浏览器验收-1793282154692"
+    },
+    {
+      "name": "React 将导入 HTML 作为文本而非脚本执行",
+      "status": "passed",
+      "detail": {
+        "documentId": "d28af8fe672ccf3d613f35ea9d9e6015"
+      }
+    },
+    {
+      "name": "浏览器导出含真实模型与结果 ID 的审计 JSON",
+      "status": "passed",
+      "detail": {
+        "bytes": 27469
+      }
+    },
+    {
+      "name": "刷新后的阅读清单仍含持久收藏",
+      "status": "passed",
+      "detail": "57dc5250279b55502f8ed03f10821c46:4"
+    },
+    {
+      "name": "阅读清单真实导出",
+      "status": "passed",
+      "detail": {
+        "bytes": 270
+      }
+    },
+    {
+      "name": "删除确认明确显示资料库与目标文献",
+      "status": "passed",
+      "detail": "Qoder验收-RAG-1793281954201"
+    },
+    {
+      "name": "浏览器确认后真实删除文献",
+      "status": "passed",
+      "detail": {
+        "filename": "浏览器上传.md"
+      }
+    },
+    {
+      "name": "浏览器展示 PDF 第 2 页来源",
+      "status": "passed",
+      "detail": "c9268ddea419f0091cf851c9fc999872:2"
+    },
+    {
+      "name": "手机原文加载完成后滚动到可见位置",
+      "status": "passed",
+      "detail": {
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "name": "390px 手机布局无横向溢出",
+      "status": "passed",
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "浏览器控制台与页面无脚本错误",
+      "status": "passed",
+      "detail": {
+        "consoleErrors": [],
+        "pageErrors": []
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}

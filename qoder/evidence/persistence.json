@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-10-29T11:08:50.175Z",
+  "checks": [
+    {
+      "name": "documents and bookmarks survive application restart",
+      "passed": true
+    }
+  ],
+  "documentId": "d75890eb48258cf33a73d83a1895d25a",
+  "passageId": "d75890eb48258cf33a73d83a1895d25a_5"
+}

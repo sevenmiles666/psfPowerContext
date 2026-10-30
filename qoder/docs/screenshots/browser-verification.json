@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-10-29T11:08:10.938Z",
+  "base": "http://127.0.0.1:8790",
+  "method": "Playwright Chromium",
+  "channel": "msedge",
+  "reason": "Browser plugin not available",
+  "viewports": [
+    "1536x1024",
+    "390x844"
+  ],
+  "checks": [
+    {
+      "name": "identity and meaningful first screen",
+      "passed": true
+    },
+    {
+      "name": "hybrid search opens original source with exact title",
+      "passed": true
+    },
+    {
+      "name": "copy citation and export original text with trace",
+      "passed": true
+    },
+    {
+      "name": "bookmark survives browser reload",
+      "passed": true
+    },
+    {
+      "name": "keyword mode and empty state update real rendered results",
+      "passed": true
+    },
+    {
+      "name": "semantic search and source filter use submitted controls",
+      "passed": true
+    },
+    {
+      "name": "upload handles Chinese filename and reports duplicate",
+      "passed": true
+    },
+    {
+      "name": "stored script is escaped in result and original preview",
+      "passed": true
+    },
+    {
+      "name": "mobile navigation and search fit without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no console or runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

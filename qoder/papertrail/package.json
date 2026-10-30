@@ -1,0 +1,40 @@
+{
+  "name": "qoder-papertrail",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "知页 PaperTrail — Qoder formal implementation with seekdb hybrid retrieval",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:server": "node --watch --env-file-if-exists=.env server/index.mjs",
+    "build": "vite build",
+    "start": "node --env-file-if-exists=.env server/index.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "node tests/verify.mjs",
+    "verify:persistence": "node tests/persistence.mjs",
+    "verify:browser": "node tests/browser.mjs"
+  },
+  "engines": {
+    "node": ">=24.5.0"
+  },
+  "overrides": {
+    "adm-zip": "0.6.1",
+    "sharp": "0.35.5"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "express": "5.3.0",
+    "multer": "2.5.0",
+    "mysql2": "3.24.6",
+    "pdfjs-dist": "6.4.299",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "seekdb": "1.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.2.0",
+    "pdf-lib": "1.17.1",
+    "playwright": "1.64.1",
+    "vite": "7.3.7"
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "generatedAt": "2026-10-29T10:57:01.671Z",
+  "kind": "local functional verification, not user impact metrics",
+  "health": {
+    "engine": "seekdb",
+    "version": "5.7.25-OceanBase seekdb-v1.4.0.0",
+    "database": "qoder_papertrail",
+    "model": {
+      "name": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+      "dimension": 384,
+      "dtype": "q8",
+      "state": "未加载"
+    },
+    "documents": 5
+  },
+  "checks": [
+    {
+      "name": "sample import persists paragraphs in actual seekdb",
+      "passed": true
+    },
+    {
+      "name": "identical files are not indexed twice",
+      "passed": true
+    },
+    {
+      "name": "hybrid returns original supporting passages",
+      "passed": true
+    },
+    {
+      "name": "semantic returns original supporting passages",
+      "passed": true
+    },
+    {
+      "name": "keyword returns original supporting passages",
+      "passed": true
+    },
+    {
+      "name": "metadata filter is applied to all three retrieval modes",
+      "passed": true
+    },
+    {
+      "name": "keyword miss is empty rather than fabricated",
+      "passed": true
+    },
+    {
+      "name": "source preview includes full source and exact passage location",
+      "passed": true
+    },
+    {
+      "name": "bookmark set is idempotent and removal works",
+      "passed": true
+    },
+    {
+      "name": "PDF import and page-2 citation reflect extracted PDF text",
+      "passed": true
+    },
+    {
+      "name": "unsupported and empty files report individual errors",
+      "passed": true
+    },
+    {
+      "name": "untrusted HTML is preserved as text in storage",
+      "passed": true
+    },
+    {
+      "name": "bad queries and foreign origins are rejected",
+      "passed": true
+    },
+    {
+      "name": "seekdb audit records real candidate IDs and retrieval operations",
+      "passed": true
+    }
+  ],
+  "modeResults": {
+    "hybrid": {
+      "results": [
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_5",
+          "text": "对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 5,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 5,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.0325,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 5 段（片段 5）\n“对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_5]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_3",
+          "text": "检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 3,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.0315,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 3 段（片段 3）\n“检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_3]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_4",
+          "text": "为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 4,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.0313,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 4 段（片段 4）\n“为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_4]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_4",
+          "text": "评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 4,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.0306,
+          "citation": "《检索评估指南》 · evaluation.md · 第 4 段（片段 4）\n“评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_4]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_3",
+          "text": "关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 3,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.0301,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 3 段（片段 3）\n“关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_3]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_1",
+          "text": "# RAG 实践笔记",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 1,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 1,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.0161,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 1 段（片段 1）\n“# RAG 实践笔记”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_1]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_1",
+          "text": "# 混合检索设计",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 1,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 1,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.0156,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 1 段（片段 1）\n“# 混合检索设计”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_1]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_1",
+          "text": "# 检索评估指南",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 1,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 1,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.0154,
+          "citation": "《检索评估指南》 · evaluation.md · 第 1 段（片段 1）\n“# 检索评估指南”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_1]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_2",
+          "text": "自编教学示例。本文解释实现思路，没有真实用户效果数据。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 2,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 2,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.0149,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 2 段（片段 2）\n“自编教学示例。本文解释实现思路，没有真实用户效果数据。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_2]"
+        },
+        {
+          "id": "a093c726d842346cad3cef7ecc901a16_1",
+          "text": "Research verification page one.",
+          "kind": "PDF",
+          "page": 1,
+          "part": 1,
+          "title": "verification-two-pages",
+          "offset": 0,
+          "filename": "verification-two-pages.pdf",
+          "paragraph": 1,
+          "documentId": "a093c726d842346cad3cef7ecc901a16",
+          "distance": 0.0143,
+          "citation": "《verification-two-pages》 · verification-two-pages.pdf · 第 1 页，第 1 段（片段 1）\n“Research verification page one.”\n[PaperTrail:a093c726d842346cad3cef7ecc901a16_1]"
+        }
+      ],
+      "trace": {
+        "id": "7f1a40f6-73a4-4e58-9087-7cf33d7a8e73",
+        "engine": "seekdb",
+        "operation": "Collection.hybridSearch / fulltext + HNSW + RRF",
+        "dbMs": 18,
+        "elapsedMs": 933,
+        "mode": "hybrid",
+        "query": "幻觉",
+        "documentId": null,
+        "count": 10
+      }
+    },
+    "semantic": {
+      "results": [
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_5",
+          "text": "对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 5,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 5,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.46357037965721626,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 5 段（片段 5）\n“对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_5]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_4",
+          "text": "为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 4,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.4754118010647095,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 4 段（片段 4）\n“为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_4]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_4",
+          "text": "评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 4,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.5089479706163336,
+          "citation": "《检索评估指南》 · evaluation.md · 第 4 段（片段 4）\n“评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_4]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_3",
+          "text": "关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 3,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.5147165572866204,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 3 段（片段 3）\n“关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_3]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_3",
+          "text": "检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 3,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.5276148633727274,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 3 段（片段 3）\n“检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_3]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_2",
+          "text": "自编教学示例。本文仅用于验证文献检索流程，不是已发表论文，也不代表实验结论。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 2,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 2,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.5381821737506565,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 2 段（片段 2）\n“自编教学示例。本文仅用于验证文献检索流程，不是已发表论文，也不代表实验结论。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_2]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_2",
+          "text": "自编教学示例。本文解释实现思路，没有真实用户效果数据。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 2,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 2,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.568444464710018,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 2 段（片段 2）\n“自编教学示例。本文解释实现思路，没有真实用户效果数据。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_2]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_3",
+          "text": "建立固定的问题集，并人工标注文献中支持问题的段落。记录召回率、前 k 项命中率与排序表现。对比关键词、语义与混合三种模式时，必须使用相同资料和相同问题，保留原始输出。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 3,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.6237737123359264,
+          "citation": "《检索评估指南》 · evaluation.md · 第 3 段（片段 3）\n“建立固定的问题集，并人工标注文献中支持问题的段落。记录召回率、前 k 项命中率与排序表现。对比关键词、语义与混合三种模式时，必须使用相同资料和相同问题，保留原始输出。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_3]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_5",
+          "text": "提效对比应记录同一任务在使用工具前后的耗时、参与人数与任务难度。只有真实采集、可追溯的数据才能作为使用效果材料。模拟数据应明确标注，不能写成用户验证成果。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 5,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 5,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.6300164771119301,
+          "citation": "《检索评估指南》 · evaluation.md · 第 5 段（片段 5）\n“提效对比应记录同一任务在使用工具前后的耗时、参与人数与任务难度。只有真实采集、可追溯的数据才能作为使用效果材料。模拟数据应明确标注，不能写成用户验证成果。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_5]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_2",
+          "text": "自编教学示例。以下为评估方法建议，不是已执行的测评数据。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 2,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 2,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.6353527626902411,
+          "citation": "《检索评估指南》 · evaluation.md · 第 2 段（片段 2）\n“自编教学示例。以下为评估方法建议，不是已执行的测评数据。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_2]"
+        }
+      ],
+      "trace": {
+        "id": "9cb8f4d6-42b5-4808-b1d4-d70143205b66",
+        "engine": "seekdb",
+        "operation": "Collection.query / HNSW cosine",
+        "dbMs": 6,
+        "elapsedMs": 13,
+        "mode": "semantic",
+        "query": "如何避免模型编造事实",
+        "documentId": null,
+        "count": 10
+      }
+    },
+    "keyword": {
+      "results": [
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_3",
+          "text": "检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 3,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.41425624187009796,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 3 段（片段 3）\n“检索增强生成（RAG）先从外部资料中找到相关段落，再将这些段落交给语言模型作为回答依据。将回答链接到明确出处，能让读者核对事实。RAG 并不保证消除幻觉。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_3]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_5",
+          "text": "对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 5,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 5,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.3755004604061595,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 5 段（片段 5）\n“对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_5]"
+        },
+        {
+          "id": "0cd729afdb81b43e0372b73ee030f0b8_4",
+          "text": "评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "检索评估指南",
+          "offset": 0,
+          "filename": "evaluation.md",
+          "paragraph": 4,
+          "documentId": "0cd729afdb81b43e0372b73ee030f0b8",
+          "distance": 0.36860351317420953,
+          "citation": "《检索评估指南》 · evaluation.md · 第 4 段（片段 4）\n“评价检索增强生成时，需要区分“找到相关段落”和“生成正确答案”。引入基于证据的评估方法，例如逐条核对主张与引用、检查引用覆盖率，有助于发现模型幻觉。人工复核也需要记录标注分歧。”\n[PaperTrail:0cd729afdb81b43e0372b73ee030f0b8_4]"
+        },
+        {
+          "id": "d75890eb48258cf33a73d83a1895d25a_3",
+          "text": "关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 3,
+          "title": "混合检索设计",
+          "offset": 0,
+          "filename": "hybrid-search.md",
+          "paragraph": 3,
+          "documentId": "d75890eb48258cf33a73d83a1895d25a",
+          "distance": 0.3619553536179614,
+          "citation": "《混合检索设计》 · hybrid-search.md · 第 3 段（片段 3）\n“关键词检索擅长匹配术语、缩写和精确标识符；语义检索通过向量表达概念，适合用不同措辞寻找相关内容。例如用“减少模型编造事实”可以寻找讨论“幻觉”的段落。模型相似度不是事实正确性的概率。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_3]"
+        },
+        {
+          "id": "6e2970126c5b67bb0038e31c2566157c_4",
+          "text": "为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。",
+          "kind": "Markdown",
+          "page": 0,
+          "part": 4,
+          "title": "RAG 实践笔记",
+          "offset": 0,
+          "filename": "rag-notes.md",
+          "paragraph": 4,
+          "documentId": "6e2970126c5b67bb0038e31c2566157c",
+          "distance": 0.3066480839649622,
+          "citation": "《RAG 实践笔记》 · rag-notes.md · 第 4 段（片段 4）\n“为减少检索增强生成中的幻觉，需要提高检索质量并约束回答依据。可以结合关键词与语义检索，过滤无关文档，并要求每项主张提供原文引用。当资料不足时，应明确表示无法从现有文献中得到结论，而不是补造答案。”\n[PaperTrail:6e2970126c5b67bb0038e31c2566157c_4]"
+        }
+      ],
+      "trace": {
+        "id": "617f4b5e-59ad-4a0f-9e6f-0d02c8f5d194",
+        "engine": "seekdb",
+        "operation": "Collection.hybridSearch / fulltext only",
+        "dbMs": 13,
+        "elapsedMs": 13,
+        "mode": "keyword",
+        "query": "幻觉",
+        "documentId": null,
+        "count": 5
+      }
+    }
+  },
+  "source": {
+    "id": "d75890eb48258cf33a73d83a1895d25a_5",
+    "title": "混合检索设计",
+    "paragraph": 5,
+    "citation": "《混合检索设计》 · hybrid-search.md · 第 5 段（片段 5）\n“对于检索增强生成中的幻觉，混合检索可以补充遗漏的相关资料，但并不能替代来源核对。应检查召回段落是否真正支持问题，并阅读原文上下文。空结果也应被诚实展示。”\n[PaperTrail:d75890eb48258cf33a73d83a1895d25a_5]"
+  },
+  "audit": [
+    {
+      "id": "7f1a40f6-73a4-4e58-9087-7cf33d7a8e73",
+      "created_at": "2026-10-29T10:57:00.161Z",
+      "operation": "search",
+      "detail": {
+        "query": "幻觉",
+        "mode": "hybrid",
+        "documentId": null,
+        "operation": "Collection.hybridSearch / fulltext + HNSW + RRF",
+        "resultIds": [
+          "d75890eb48258cf33a73d83a1895d25a_5",
+          "6e2970126c5b67bb0038e31c2566157c_3",
+          "6e2970126c5b67bb0038e31c2566157c_4",
+          "0cd729afdb81b43e0372b73ee030f0b8_4",
+          "d75890eb48258cf33a73d83a1895d25a_3",
+          "6e2970126c5b67bb0038e31c2566157c_1",
+          "d75890eb48258cf33a73d83a1895d25a_1",
+          "0cd729afdb81b43e0372b73ee030f0b8_1",
+          "d75890eb48258cf33a73d83a1895d25a_2",
+          "a093c726d842346cad3cef7ecc901a16_1"
+        ],
+        "dbMs": 18,
+        "elapsedMs": 933,
+        "model": {
+          "name": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+          "dimension": 384,
+          "dtype": "q8",
+          "state": "已就绪"
+        },
+        "rrf": {
+          "rankWindowSize": 30,
+          "rankConstant": 60
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-10-29T13:53:54.820Z",
+  "health": {
+    "engine": "seekdb",
+    "version": "5.7.25-OceanBase seekdb-v1.4.0.0",
+    "database": "qoder_papertrail_qoder",
+    "collection": "ptq_passages_34c9e32ff8",
+    "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384"
+  },
+  "checks": [
+    {
+      "name": "应用与 seekdb 在重启后可用",
+      "status": "passed",
+      "detail": {
+        "engine": "seekdb",
+        "version": "5.7.25-OceanBase seekdb-v1.4.0.0",
+        "database": "qoder_papertrail_qoder",
+        "collection": "ptq_passages_34c9e32ff8",
+        "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384"
+      }
+    },
+    {
+      "name": "资料库在重启后保留",
+      "status": "passed",
+      "detail": "e0b58103d0a64718bf93da3386b58c80"
+    },
+    {
+      "name": "文献 57dc5250279b55502f8ed03f10821c46 在重启后保留",
+      "status": "passed",
+      "detail": "57dc5250279b55502f8ed03f10821c46"
+    },
+    {
+      "name": "文献 c9268ddea419f0091cf851c9fc999872 在重启后保留",
+      "status": "passed",
+      "detail": "c9268ddea419f0091cf851c9fc999872"
+    },
+    {
+      "name": "文献 d28af8fe672ccf3d613f35ea9d9e6015 在重启后保留",
+      "status": "passed",
+      "detail": "d28af8fe672ccf3d613f35ea9d9e6015"
+    },
+    {
+      "name": "收藏在应用与数据库重启后保留",
+      "status": "passed",
+      "detail": "57dc5250279b55502f8ed03f10821c46:4"
+    },
+    {
+      "name": "重启后原文偏移仍逐字一致",
+      "status": "passed",
+      "detail": {
+        "id": "57dc5250279b55502f8ed03f10821c46:4",
+        "location": "第 4 段 · 片段 4"
+      }
+    },
+    {
+      "name": "重启后真实全文索引仍可检索",
+      "status": "passed",
+      "detail": {
+        "id": "f9b08e8e-334b-4161-bda3-570754c171b9",
+        "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+        "query": "幻觉",
+        "mode": "keyword",
+        "documentId": "57dc5250279b55502f8ed03f10821c46",
+        "operation": "Collection.hybridSearch · IK fulltext only",
+        "resultIds": [
+          "57dc5250279b55502f8ed03f10821c46:4"
+        ],
+        "dbMs": 218,
+        "elapsedMs": 231,
+        "modelSignature": null,
+        "rrf": null
+      }
+    },
+    {
+      "name": "重启不会恢复已删除文献",
+      "status": "passed",
+      "detail": "bb93092d37d804ff1735e7ce8f806eb9"
+    }
+  ]
+}

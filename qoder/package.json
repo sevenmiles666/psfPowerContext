@@ -1,0 +1,37 @@
+{
+  "name": "papertrail-qoder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "start": "node --use-env-proxy --env-file-if-exists=.env server/index.mjs",
+    "test": "node --test tests/unit.test.mjs",
+    "verify": "node tests/integration.mjs",
+    "verify:persistence": "node tests/integration.mjs --check-persistence",
+    "verify:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "express": "5.1.0",
+    "lucide-react": "0.468.0",
+    "multer": "2.5.0",
+    "pdfjs-dist": "5.4.296",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "seekdb": "1.4.0"
+  },
+  "engines": {
+    "node": ">=24.5.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5",
+    "adm-zip": "0.6.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@vitejs/plugin-react": "5.2.0",
+    "vite": "7.3.7"
+  }
+}

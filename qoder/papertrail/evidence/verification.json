@@ -1,0 +1,524 @@
+{
+  "status": "passed",
+  "startedAt": "2026-10-29T13:52:34.150Z",
+  "completedAt": "2026-10-29T13:52:43.205Z",
+  "database": {
+    "engine": "seekdb",
+    "version": "5.7.25-OceanBase seekdb-v1.4.0.0",
+    "database": "qoder_papertrail_qoder",
+    "collection": "ptq_passages_34c9e32ff8",
+    "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384"
+  },
+  "sampleDeclaration": "All imported documents are self-authored teaching fixtures; none are represented as published papers or user-effect data.",
+  "state": {
+    "createdAt": "2026-10-29T13:52:43.204Z",
+    "primaryLibraryId": "e0b58103d0a64718bf93da3386b58c80",
+    "primaryLibraryName": "Qoder验收-RAG-1793281954201",
+    "secondaryLibraryId": "59113d3f0e6c4b0b9ddb124f3ca37cd5",
+    "secondaryLibraryName": "Qoder验收-隔离-1793281954201",
+    "ragDocumentId": "57dc5250279b55502f8ed03f10821c46",
+    "pdfDocumentId": "c9268ddea419f0091cf851c9fc999872",
+    "pdfChunkId": "c9268ddea419f0091cf851c9fc999872:2",
+    "escapeDocumentId": "d28af8fe672ccf3d613f35ea9d9e6015",
+    "escapeChunkId": "d28af8fe672ccf3d613f35ea9d9e6015:2",
+    "persistedBookmarkId": "57dc5250279b55502f8ed03f10821c46:4",
+    "secondaryDeletedDocumentId": "bb93092d37d804ff1735e7ce8f806eb9"
+  },
+  "checks": [
+    {
+      "name": "真实 seekdb 1.4 与健康检查",
+      "status": "passed",
+      "detail": {
+        "engine": "seekdb",
+        "version": "5.7.25-OceanBase seekdb-v1.4.0.0",
+        "database": "qoder_papertrail_qoder",
+        "collection": "ptq_passages_34c9e32ff8",
+        "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384"
+      }
+    },
+    {
+      "name": "创建两个独立主题资料库",
+      "status": "passed",
+      "detail": {
+        "primary": {
+          "id": "e0b58103d0a64718bf93da3386b58c80",
+          "name": "Qoder验收-RAG-1793281954201",
+          "createdAt": "2026-10-29T13:52:34.209Z"
+        },
+        "secondary": {
+          "id": "59113d3f0e6c4b0b9ddb124f3ca37cd5",
+          "name": "Qoder验收-隔离-1793281954201",
+          "createdAt": "2026-10-29T13:52:34.236Z"
+        }
+      }
+    },
+    {
+      "name": "导入三份明确标注的自编样例",
+      "status": "passed",
+      "detail": [
+        {
+          "filename": "rag-basics.md",
+          "status": "imported",
+          "chunks": 6
+        },
+        {
+          "filename": "evidence-notes.md",
+          "status": "imported",
+          "chunks": 8
+        },
+        {
+          "filename": "course-retrieval.txt",
+          "status": "imported",
+          "chunks": 5
+        }
+      ]
+    },
+    {
+      "name": "重复导入按内容摘要去重且不增加片段",
+      "status": "passed",
+      "detail": [
+        {
+          "filename": "rag-basics.md",
+          "status": "duplicate"
+        },
+        {
+          "filename": "evidence-notes.md",
+          "status": "duplicate"
+        },
+        {
+          "filename": "course-retrieval.txt",
+          "status": "duplicate"
+        }
+      ]
+    },
+    {
+      "name": "keyword 检索实际返回当前库片段",
+      "status": "passed",
+      "detail": {
+        "count": 1,
+        "trace": {
+          "id": "3534e6b7-d79a-44c5-980c-cf40d8aed09f",
+          "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+          "query": "幻觉",
+          "mode": "keyword",
+          "documentId": null,
+          "operation": "Collection.hybridSearch · IK fulltext only",
+          "resultIds": [
+            "57dc5250279b55502f8ed03f10821c46:4"
+          ],
+          "dbMs": 28,
+          "elapsedMs": 35,
+          "modelSignature": null,
+          "rrf": null
+        }
+      }
+    },
+    {
+      "name": "keyword 检索严格限定指定文献",
+      "status": "passed",
+      "detail": {
+        "count": 1,
+        "documentId": "57dc5250279b55502f8ed03f10821c46"
+      }
+    },
+    {
+      "name": "semantic 检索实际返回当前库片段",
+      "status": "passed",
+      "detail": {
+        "count": 10,
+        "trace": {
+          "id": "8de893c2-304f-4a47-9882-4a8cfe00961e",
+          "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+          "query": "如何避免模型编造事实？",
+          "mode": "semantic",
+          "documentId": null,
+          "operation": "Collection.query · HNSW cosine",
+          "resultIds": [
+            "57dc5250279b55502f8ed03f10821c46:4",
+            "57dc5250279b55502f8ed03f10821c46:2",
+            "57dc5250279b55502f8ed03f10821c46:5",
+            "5faefc844621575fe5fc50eca2f464e4:4",
+            "5faefc844621575fe5fc50eca2f464e4:7",
+            "57dc5250279b55502f8ed03f10821c46:3",
+            "5faefc844621575fe5fc50eca2f464e4:1",
+            "5faefc844621575fe5fc50eca2f464e4:6",
+            "5faefc844621575fe5fc50eca2f464e4:8",
+            "51db7e9fcb62b9224b59cc47a3f9d41b:2"
+          ],
+          "dbMs": 9,
+          "elapsedMs": 20,
+          "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384",
+          "rrf": null
+        }
+      }
+    },
+    {
+      "name": "semantic 检索严格限定指定文献",
+      "status": "passed",
+      "detail": {
+        "count": 6,
+        "documentId": "57dc5250279b55502f8ed03f10821c46"
+      }
+    },
+    {
+      "name": "hybrid 检索实际返回当前库片段",
+      "status": "passed",
+      "detail": {
+        "count": 10,
+        "trace": {
+          "id": "2554e3b6-d32b-47f3-8c63-9c672fb4d33d",
+          "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+          "query": "如何避免模型编造事实？",
+          "mode": "hybrid",
+          "documentId": null,
+          "operation": "Collection.hybridSearch · IK fulltext + HNSW cosine + database RRF",
+          "resultIds": [
+            "5faefc844621575fe5fc50eca2f464e4:4",
+            "57dc5250279b55502f8ed03f10821c46:5",
+            "57dc5250279b55502f8ed03f10821c46:3",
+            "5faefc844621575fe5fc50eca2f464e4:7",
+            "5faefc844621575fe5fc50eca2f464e4:6",
+            "57dc5250279b55502f8ed03f10821c46:4",
+            "57dc5250279b55502f8ed03f10821c46:2",
+            "5faefc844621575fe5fc50eca2f464e4:1",
+            "5faefc844621575fe5fc50eca2f464e4:8",
+            "51db7e9fcb62b9224b59cc47a3f9d41b:2"
+          ],
+          "dbMs": 20,
+          "elapsedMs": 27,
+          "modelSignature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384",
+          "rrf": {
+            "rankWindowSize": 30,
+            "rankConstant": 60,
+            "formula": "1 / (60 + branchRank)",
+            "execution": "seekdb DBMS_HYBRID_SEARCH"
+          }
+        }
+      }
+    },
+    {
+      "name": "混合检索记录数据库 RRF 参数与结果 ID",
+      "status": "passed",
+      "detail": {
+        "rankWindowSize": 30,
+        "rankConstant": 60,
+        "formula": "1 / (60 + branchRank)",
+        "execution": "seekdb DBMS_HYBRID_SEARCH"
+      }
+    },
+    {
+      "name": "hybrid 检索严格限定指定文献",
+      "status": "passed",
+      "detail": {
+        "count": 6,
+        "documentId": "57dc5250279b55502f8ed03f10821c46"
+      }
+    },
+    {
+      "name": "无关关键词诚实返回空结果",
+      "status": "passed",
+      "detail": {
+        "id": "b23618e3-cd4b-4aa2-84c3-e4cb1ca74e94",
+        "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+        "query": "unfindablezzzz987654321",
+        "mode": "keyword",
+        "documentId": null,
+        "operation": "Collection.hybridSearch · IK fulltext only",
+        "resultIds": [],
+        "dbMs": 6,
+        "elapsedMs": 9,
+        "modelSignature": null,
+        "rrf": null
+      }
+    },
+    {
+      "name": "原文核对保留完整文件、定位与逐字偏移",
+      "status": "passed",
+      "detail": {
+        "id": "57dc5250279b55502f8ed03f10821c46:4",
+        "location": "第 4 段 · 片段 4"
+      }
+    },
+    {
+      "name": "同一内容可独立存在于另一资料库",
+      "status": "passed",
+      "detail": [
+        {
+          "filename": "rag-basics.md",
+          "documentId": "bb93092d37d804ff1735e7ce8f806eb9"
+        },
+        {
+          "filename": "isolation-notes.txt",
+          "documentId": "1b979054b62ab127737bf70a24774dbf"
+        }
+      ]
+    },
+    {
+      "name": "keyword 不返回第二资料库片段",
+      "status": "passed",
+      "detail": {
+        "count": 0,
+        "resultIds": []
+      }
+    },
+    {
+      "name": "semantic 不返回第二资料库片段",
+      "status": "passed",
+      "detail": {
+        "count": 10,
+        "resultIds": [
+          "5faefc844621575fe5fc50eca2f464e4:1",
+          "57dc5250279b55502f8ed03f10821c46:1",
+          "57dc5250279b55502f8ed03f10821c46:3",
+          "5faefc844621575fe5fc50eca2f464e4:7",
+          "51db7e9fcb62b9224b59cc47a3f9d41b:1",
+          "57dc5250279b55502f8ed03f10821c46:5",
+          "51db7e9fcb62b9224b59cc47a3f9d41b:3",
+          "5faefc844621575fe5fc50eca2f464e4:3",
+          "57dc5250279b55502f8ed03f10821c46:4",
+          "5faefc844621575fe5fc50eca2f464e4:4"
+        ]
+      }
+    },
+    {
+      "name": "hybrid 不返回第二资料库片段",
+      "status": "passed",
+      "detail": {
+        "count": 10,
+        "resultIds": [
+          "5faefc844621575fe5fc50eca2f464e4:1",
+          "57dc5250279b55502f8ed03f10821c46:1",
+          "57dc5250279b55502f8ed03f10821c46:3",
+          "5faefc844621575fe5fc50eca2f464e4:7",
+          "51db7e9fcb62b9224b59cc47a3f9d41b:1",
+          "57dc5250279b55502f8ed03f10821c46:5",
+          "51db7e9fcb62b9224b59cc47a3f9d41b:3",
+          "5faefc844621575fe5fc50eca2f464e4:3",
+          "57dc5250279b55502f8ed03f10821c46:4",
+          "5faefc844621575fe5fc50eca2f464e4:4"
+        ]
+      }
+    },
+    {
+      "name": "第二资料库可检索自己的独有资料",
+      "status": "passed",
+      "detail": {
+        "id": "84fa1965-880c-426e-b5df-be67722d66cc",
+        "libraryId": "59113d3f0e6c4b0b9ddb124f3ca37cd5",
+        "query": "ZEPHYRISOLATION7341",
+        "mode": "keyword",
+        "documentId": null,
+        "operation": "Collection.hybridSearch · IK fulltext only",
+        "resultIds": [
+          "1b979054b62ab127737bf70a24774dbf:2"
+        ],
+        "dbMs": 6,
+        "elapsedMs": 9,
+        "modelSignature": null,
+        "rrf": null
+      }
+    },
+    {
+      "name": "收藏按资料库隔离保存",
+      "status": "passed",
+      "detail": {
+        "primary": "57dc5250279b55502f8ed03f10821c46:4",
+        "secondary": "bb93092d37d804ff1735e7ce8f806eb9:4"
+      }
+    },
+    {
+      "name": "删除当前库文献并清理其收藏",
+      "status": "passed",
+      "detail": {
+        "documentId": "bb93092d37d804ff1735e7ce8f806eb9",
+        "deleted": true,
+        "alreadyDeleted": false
+      }
+    },
+    {
+      "name": "删除后索引不再返回且不影响另一库",
+      "status": "passed",
+      "detail": {
+        "secondary": [],
+        "primary": [
+          "57dc5250279b55502f8ed03f10821c46:4"
+        ]
+      }
+    },
+    {
+      "name": "重复删除返回幂等结果",
+      "status": "passed",
+      "detail": {
+        "documentId": "bb93092d37d804ff1735e7ce8f806eb9",
+        "deleted": false,
+        "alreadyDeleted": true
+      }
+    },
+    {
+      "name": "不能使用第二资料库删除第一库文献",
+      "status": "passed",
+      "detail": {
+        "documentId": "57dc5250279b55502f8ed03f10821c46",
+        "deleted": false,
+        "alreadyDeleted": true
+      }
+    },
+    {
+      "name": "真实两页 PDF 导入并生成片段",
+      "status": "passed",
+      "detail": {
+        "filename": "two-page-evidence.pdf",
+        "status": "imported",
+        "duplicate": false,
+        "documentId": "c9268ddea419f0091cf851c9fc999872",
+        "title": "two-page-evidence",
+        "chunkCount": 6,
+        "auditId": "3406be8a-90dd-4ac2-80c5-70bde335fb48"
+      }
+    },
+    {
+      "name": "PDF 引用准确定位第 2 页",
+      "status": "passed",
+      "detail": [
+        {
+          "id": "c9268ddea419f0091cf851c9fc999872:2",
+          "page": 2,
+          "chunk": 2
+        }
+      ]
+    },
+    {
+      "name": "PDF 长段落片段与原文偏移一致",
+      "status": "passed",
+      "detail": {
+        "id": "c9268ddea419f0091cf851c9fc999872:2",
+        "location": "第 2 页 · 第 2 段 · 片段 2"
+      }
+    },
+    {
+      "name": "长 Markdown 段落实际拆成多个片段",
+      "status": "passed",
+      "detail": {
+        "paragraphs": 7,
+        "chunks": 8
+      }
+    },
+    {
+      "name": "长段落可按稳定片段编号定位",
+      "status": "passed",
+      "detail": [
+        {
+          "id": "5faefc844621575fe5fc50eca2f464e4:5",
+          "paragraph": 5,
+          "chunk": 5
+        },
+        {
+          "id": "5faefc844621575fe5fc50eca2f464e4:7",
+          "paragraph": 7,
+          "chunk": 7
+        }
+      ]
+    },
+    {
+      "name": "不支持、空白、无文字 PDF 与超长文本均明确失败",
+      "status": "passed",
+      "detail": [
+        {
+          "filename": "unsupported.docx",
+          "error": "仅支持 PDF、Markdown 和 TXT 文件。"
+        },
+        {
+          "filename": "blank.md",
+          "error": "未提取到文字。空白文件或扫描 PDF 不会产生空文献；扫描件请先进行 OCR。"
+        },
+        {
+          "filename": "no-text.pdf",
+          "error": "未提取到文字。空白文件或扫描 PDF 不会产生空文献；扫描件请先进行 OCR。"
+        },
+        {
+          "filename": "too-long.txt",
+          "error": "提取文本超过 300,000 字符限制。"
+        }
+      ]
+    },
+    {
+      "name": "失败导入不产生成功但零片段的文献",
+      "status": "passed",
+      "detail": {
+        "before": 4,
+        "after": 4
+      }
+    },
+    {
+      "name": "中文文件名与 HTML 测试文本真实导入",
+      "status": "passed",
+      "detail": {
+        "filename": "转义与定位样例.md",
+        "status": "imported",
+        "duplicate": false,
+        "documentId": "d28af8fe672ccf3d613f35ea9d9e6015",
+        "title": "转义与定位样例",
+        "chunkCount": 3,
+        "auditId": "b6dadce5-6768-45d9-850d-971bb1c05abc"
+      }
+    },
+    {
+      "name": "转义样例可检索且原文保留标签字符串",
+      "status": "passed",
+      "detail": {
+        "id": "d28af8fe672ccf3d613f35ea9d9e6015:2",
+        "text": "XSSMARK <script>window.__papertrailXss = \"executed\"</script> <img src=x onerror=\"window.__papertrailXss=1\"> 这段文字必须按纯文本显示。"
+      }
+    },
+    {
+      "name": "审计包含资料库、查询、模式、模型、结果 ID 与两类耗时",
+      "status": "passed",
+      "detail": {
+        "id": "14971799-9407-4812-b94a-bc05318b882e",
+        "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+        "operation": "search",
+        "detail": {
+          "libraryId": "e0b58103d0a64718bf93da3386b58c80",
+          "query": "ZEPHYRISOLATION7341",
+          "mode": "hybrid",
+          "documentId": null,
+          "operation": "Collection.hybridSearch · IK fulltext + HNSW cosine + database RRF",
+          "resultIds": [
+            "5faefc844621575fe5fc50eca2f464e4:1",
+            "57dc5250279b55502f8ed03f10821c46:1",
+            "57dc5250279b55502f8ed03f10821c46:3",
+            "5faefc844621575fe5fc50eca2f464e4:7",
+            "51db7e9fcb62b9224b59cc47a3f9d41b:1",
+            "57dc5250279b55502f8ed03f10821c46:5",
+            "51db7e9fcb62b9224b59cc47a3f9d41b:3",
+            "5faefc844621575fe5fc50eca2f464e4:3",
+            "57dc5250279b55502f8ed03f10821c46:4",
+            "5faefc844621575fe5fc50eca2f464e4:4"
+          ],
+          "model": {
+            "id": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+            "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+            "signature": "Xenova/paraphrase-multilingual-MiniLM-L12-v2@2c4055b12046f11709e9df2c122e59ffbdc2f900:384"
+          },
+          "rrf": {
+            "rankWindowSize": 30,
+            "rankConstant": 60,
+            "formula": "1 / (60 + branchRank)",
+            "execution": "seekdb DBMS_HYBRID_SEARCH"
+          },
+          "dbMs": 10,
+          "elapsedMs": 17
+        },
+        "createdAt": "2026-10-29T13:52:40.041Z"
+      }
+    },
+    {
+      "name": "真实导入、异常与删除均有可导出记录",
+      "status": "passed",
+      "detail": {
+        "primaryAuditCount": 26,
+        "secondaryAuditCount": 8
+      }
+    }
+  ]
+}
