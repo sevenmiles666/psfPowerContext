@@ -12,7 +12,7 @@
 | 运行说明 | `papertrail/README.md`：环境、依赖版本、seekdb 两种接入方式、安装到启动、首次使用与验收命令 |
 | 验证样例 | 初始数据 `papertrail/samples/`；输入「如何避免模型编造事实？」混合模式；步骤与实测结果见展示站点「复现」一节与 `docs/VALIDATION.md` |
 | 技术作用记录 | `evidence/verification.json`（34/34）、`evidence/persistence.json`（9/9）、`evidence/browser.json`（19/19），含 seekdb 版本、Collection、模型签名、RRF 参数与耗时 |
-| Qoder 开发记录 | 文字记录 `qoder/docs/QODER_DEVELOPMENT.md`；**Qoder 对话截图/录屏需本人保存，Qoder UID 需本人填写** |
+| Qoder 开发记录 | 文字记录 `qoder/docs/QODER_DEVELOPMENT.md`；真实会话窗口截图 `qoder/docs/qoder-record/qoder-session-2026-10-30.png`；Qoder 账号 UID `01a1879e-0898-72c9-9713-cc4dc5ebc14c`（同时填写在测试平台） |
 | 使用效果材料 | 尚未开展真实用户评估，不提交虚构数字 |
 | 凭据 | `.env` 未提交；`.env.example` 使用占位密码；站点与文档不含真实密钥 |
 
